@@ -1,6 +1,25 @@
 ## css-in-js-benchmark
 
+#### Command to build all test-apps
+
+```bash
+npm run build-all
+```
+
+### Results from webpack builds
+
+---
+
+|library|build time|build size|
+|-------|-----:|-----:|
+|react-jss|3387.0000 ms|186579.0000 ms|
+|typestyle|2741.0000 ms|147639.0000 ms|
+
+
+---
+
 #### Command To run the complete test-suite
+
 ```bash
 npm run bench-all
 ```
