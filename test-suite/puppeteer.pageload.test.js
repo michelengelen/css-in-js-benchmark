@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
-const libraries = require('../libraries');
-const {createServer, destroyServer} = require('./createServer');
+const {createServer, destroyServer} = require('../scripts/createServer');
+const {createPuppeteerResultsFile} = require('../scripts/createResults');
+const {libraries, responseMetrics, paintMetrics} = require('../benchConfig');
 
 const RESPONSE_RESULTS = {}
 const PAINT_RESULTS = {}
+const RESULTS = {}
 
 const createBrowser = async () => {
     const browser = await puppeteer.launch();
@@ -33,8 +35,7 @@ const extractDataFromPerformanceMetrics = (metrics, ...dataNames) => {
 
     const extractedData = {};
     dataNames.forEach(name => {
-        extractedData[name] =
-            getTimeFromPerformanceMetrics(metrics, name) - navigationStart;
+        extractedData[name] = getTimeFromPerformanceMetrics(metrics, name) - navigationStart;
     });
 
     return extractedData;
@@ -53,13 +54,11 @@ const testPageResponse = async (page, key) => {
         await page.evaluate(() => JSON.stringify(window.performance.getEntries()))
     );
 
-    RESPONSE_RESULTS[key] = extractDataFromPerformanceTiming(
+    if (!RESPONSE_RESULTS[key]) RESPONSE_RESULTS[key] = [];
+    RESPONSE_RESULTS[key].push(extractDataFromPerformanceTiming(
         performanceTiming[0] || {},
-        'responseEnd',
-        'domInteractive',
-        'domContentLoadedEventEnd',
-        'loadEventEnd'
-    );
+        ...responseMetrics
+    ));
 }
 
 const consecPaintTests = (page, libraryKeys) => {
@@ -69,7 +68,6 @@ const consecPaintTests = (page, libraryKeys) => {
 }
 
 const testPageFirstPaint = async (page, key) => {
-    console.log('### PAINT - library: ', key)
     const client = await page.target().createCDPSession();
     await client.send('Performance.enable');
 
@@ -78,25 +76,44 @@ const testPageFirstPaint = async (page, key) => {
     await page.waitForTimeout(1000);
     const performanceMetrics = await client.send('Performance.getMetrics');
 
-    console.log('### PAINT - metrics: ', performanceMetrics)
-
-    PAINT_RESULTS[key] = extractDataFromPerformanceMetrics(
+    if (!PAINT_RESULTS[key]) PAINT_RESULTS[key] = []
+    PAINT_RESULTS[key].push(extractDataFromPerformanceMetrics(
         performanceMetrics,
-        'FirstMeaningfulPaint'
-    );
+        ...paintMetrics
+    ));
+}
+
+const parseResults = async () => {
+    await [...responseMetrics, ...paintMetrics].forEach(metric => RESULTS[metric] = {})
+    await libraries.forEach(library => {
+        if (PAINT_RESULTS[library]) {
+            paintMetrics.forEach(metric => createResultArray(PAINT_RESULTS[library], library, metric))
+        }
+        if (RESPONSE_RESULTS[library]) {
+            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS[library], library, metric))
+        }
+    })
+}
+
+const createResultArray = (arr, library, metric) => {
+    if (!RESULTS[metric][library]) RESULTS[metric][library] = []
+    RESULTS[metric][library] = arr.map(x => x[metric])
+    RESULTS[metric][library].push(arr.reduce((a, b) => a + b[metric], 0) / arr.length)
 }
 
 createServer()
     .then(() => createBrowser())
     .then(async ({page, browser}) => {
-        await consecResponseTests(page, [...libraries])
-        await consecPaintTests(page, [...libraries])
-        return browser
+        return consecResponseTests(page, [...libraries])
+            .then(() => consecResponseTests(page, [...libraries]))
+            .then(() => consecResponseTests(page, [...libraries]))
+            .then(() => consecPaintTests(page, [...libraries]))
+            .then(() => consecPaintTests(page, [...libraries]))
+            .then(() => consecPaintTests(page, [...libraries]))
+            .then(() => parseResults())
+            .then(() => createPuppeteerResultsFile(RESULTS))
+            .then(() => browser)
     })
     .then(async (browser) => await browser.close())
-    .then(() => {
-        console.log('--> response results: ', RESPONSE_RESULTS)
-        console.log('--> paint results: ', PAINT_RESULTS)
-        return destroyServer()
-    })
+    .then(() => destroyServer())
     .catch((error) => console.log('--> !!! ERROR !!!', error))

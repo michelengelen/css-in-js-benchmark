@@ -9,9 +9,9 @@
     "build-react-jss": "webpack --config webpack-config/react-jss.config.js",
     "build-styled-components": "webpack --config webpack-config/webpack.styled.config.js",
     "build-typestyle": "webpack --config webpack-config/typestyle.config.js",
-    "number-request": "node test-suite/number.requests.test.js",
-    "puppeteer-request": "node test-suite/puppeteer.pageload.test.js",
-    "bench": "npm run number-request"
+    "number-bench": "node test-suite/number.requests.test.js",
+    "puppeteer-bench": "node test-suite/puppeteer.pageload.test.js",
+    "bench-all": "npm run number-bench && npm run puppeteer-bench"
   },
   "dependencies": {
     "react": "^17.0.1",

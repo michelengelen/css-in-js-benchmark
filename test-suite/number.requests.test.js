@@ -3,11 +3,11 @@
 const axios = require('axios')
 const dayJS = require('dayjs')
 
-const {createServer, destroyServer} = require('./createServer')
-const libraries = require('../libraries')
-const {createNumberResultsFile} = require('./createResults')
+const {createServer, destroyServer} = require('../scripts/createServer')
+const {createNumberResultsFile} = require('../scripts/createResults')
 
-const MAX_CYCLES = 2000
+const {libraries, numberOfRequests} = require('../benchConfig')
+
 const RESULTS = {}
 
 const consecTests = (libraryKeys) => {
@@ -17,21 +17,21 @@ const consecTests = (libraryKeys) => {
 }
 
 const consecRequest = (url, i = 0) => {
-    if ((i + 1) === MAX_CYCLES) return axios.get(url)
+    if ((i + 1) === numberOfRequests) return axios.get(url)
     return axios.get(url).then(() => consecRequest(url, i + 1))
 }
 
 const performTests = (library) => {
     let start = dayJS()
-    console.log(`--> requesting ${MAX_CYCLES} times for ${library} started at ${start.format('HH:mm:ss')}`)
+    console.log(`--> requesting ${numberOfRequests} times for ${library} started at ${start.format('HH:mm:ss')}`)
     console.log(`--> start requesting: http://localhost:1337/${library}`)
     return consecRequest(`http://localhost:1337/${library}/`)
         .then(() => {
             if (!RESULTS[library]) RESULTS[library] = []
             const time = dayJS().valueOf() - start.valueOf()
             RESULTS[library].push(time)
-            if (RESULTS[library].length === 3) RESULTS[library].push((RESULTS[library].reduce((a, b) => a + b) / RESULTS[library].length).toFixed(4))
-            console.log(`${library} test completed after ${MAX_CYCLES} requests in ${dayJS().valueOf() - start.valueOf()} ms`)
+            if (RESULTS[library].length === 3) RESULTS[library].push((RESULTS[library].reduce((a, b) => a + b) / RESULTS[library].length))
+            console.log(`${library} test completed after ${numberOfRequests} requests in ${dayJS().valueOf() - start.valueOf()} ms`)
             console.log('')
         })
         .catch((error) => {
@@ -78,15 +78,15 @@ createServer().then(() => {
                 return createNumberResultsFile(RESULTS)
             })
             .then(() => {
-                    //Wait for any asynchronous errors
-                    console.log('---------------------------------')
-                    console.log('--> Preparing to shutdown!')
-                    console.log('---------------------------------')
-                    setTimeout(() => {
-                        destroyServer()
-                    }, 2000)
-                }
-            ).catch((error) => {
+                //Wait for any asynchronous errors
+                console.log('---------------------------------')
+                console.log('--> Preparing to shutdown!')
+                console.log('---------------------------------')
+                setTimeout(() => {
+                    destroyServer()
+                }, 2000)
+            })
+            .catch((error) => {
                 console.log('ERROR while performing requests: ', error)
                 destroyServer()
             })
