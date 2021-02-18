@@ -20,8 +20,8 @@ const getResultsTable = results => libraries.map(key => `|${key}|${results[key].
 
 const createNumberResultsFile = async (results) => {
     let template = await fse.readFile(path.resolve(__dirname, numberTemplatePath), 'utf-8');
-    template = template.replace(/!~!numberOfRquests!~!/gm, numberOfRequests);
-    template = template.replace('!~!numberOfRquestsResults!~!', getResultsTable(results));
+    template = template.replace(/(!~!numberOfRequests!~!)/gm, numberOfRequests);
+    template = template.replace('!~!numberOfRequestsResults!~!', getResultsTable(results));
     await fse.outputFile(path.resolve(__dirname, numberFilePath), template, noop);
     await fse.writeJson(path.resolve(__dirname, numberJSONPath), results, noop);
     await updateReadmeFile();
@@ -59,7 +59,8 @@ const updateReadmeFile = async () => {
         template = template.replace(`!~!${metric}!~!`, getResultsTable(puppeteerResults[metric]));
     });
 
-    template = template.replace('!~!numberOfRquestsResults!~!', getResultsTable(requestsResults));
+    template = template.replace(/(!~!numberOfRequests!~!)/gm, numberOfRequests);
+    template = template.replace('!~!numberOfRequestsResults!~!', getResultsTable(requestsResults));
     template = template.replace('!~!buildResults!~!', getResultsTable(buildResults));
 
     await fse.outputFile(path.resolve(__dirname, readmeFilePath), template, noop);

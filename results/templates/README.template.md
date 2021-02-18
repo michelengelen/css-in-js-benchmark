@@ -78,8 +78,26 @@ In this case we are measuring the **duration** for the `navigation` performance 
 
 ### Results from Express JS Test
 
+Time To Complete !~!numberOfRequests!~! consecutive requests
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!numberOfRquestsResults!~!
+!~!numberOfRequestsResults!~!
 
 ---
+
+## ToDo
+
+[] add sass
+[] add aphrodite
+[] add emotion
+[] add styled-components
+[] add theming tests
+[] add better console output while testing
+[] add chalk for coloring console outputs
+
+---
+
+## Resources
+
+This repository is based upon the work done here [x_team_css_in_js](https://github.com/Thoughtscript/x_team_css_in_js)
