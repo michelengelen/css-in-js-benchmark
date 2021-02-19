@@ -9,8 +9,8 @@ module.exports = {
     ],
     serverPorts: {
         "react-jss": 1337,
-        typestyle: 1338,
-        "styled-components": 1339,
+        "styled-components": 1338,
+        typestyle: 1339,
     },
     responseMetrics: [
         'duration',

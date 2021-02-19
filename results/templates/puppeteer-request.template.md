@@ -15,9 +15,17 @@ all metrics are measured in ms
 
 `FirstMeaningfulPaint`
 
+request to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!FirstMeaningfulPaint!~!
+!~!FirstMeaningfulPaintHome!~!
+
+request to `/table`
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!FirstMeaningfulPaintTable!~!
 
 **First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded.  It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
 
@@ -25,9 +33,17 @@ all metrics are measured in ms
 
 `domComplete`
 
+request to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!domComplete!~!
+!~!domCompleteHome!~!
+
+request to `/table`
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!domCompleteTable!~!
 
 The **domComplete** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to complete.
 
@@ -35,9 +51,17 @@ The **domComplete** `read-only` property returns a `timestamp` representing the 
 
 `domInteractive`
 
+request to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!domInteractive!~!
+!~!domInteractiveHome!~!
+
+request to `/table`
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!domInteractiveTable!~!
 
 The **domInteractive** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to interactive.
 
@@ -45,9 +69,17 @@ The **domInteractive** `read-only` property returns a `timestamp` representing t
 
 `domContentLoadedEventEnd`
 
+request to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!domContentLoadedEventEnd!~!
+!~!domContentLoadedEventEndHome!~!
+
+request to `/table`
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!domContentLoadedEventEndTable!~!
 
 The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` representing the time value equal to the time immediately after the current document's `DOMContentLoaded` event completes.
 
@@ -55,9 +87,17 @@ The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` repr
 
 `duration`
 
+request to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!duration!~!
+!~!durationHome!~!
+
+request to `/table`
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!durationTable!~!
 
 In this case we are measuring the **duration** for the `navigation` performance type. It returns the `timestamp` that is the difference between the `PerformanceNavigationTiming.loadEventEnd` and `PerformanceEntry.startTime` properties, respectively
 

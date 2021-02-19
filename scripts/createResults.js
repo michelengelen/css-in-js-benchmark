@@ -31,7 +31,8 @@ const createNumberResultsFile = async (results) => {
 const createPuppeteerResultsFile = async (results) => {
     let template = await fse.readFile(path.resolve(__dirname, puppeteerTemplatePath), 'utf-8');
     [...responseMetrics, ...paintMetrics].forEach(metric => {
-        template = template.replace(`!~!${metric}!~!`, getResultsTable(results[metric]))
+        template = template.replace(`!~!${metric}Home!~!`, getResultsTable(results.home[metric]))
+        template = template.replace(`!~!${metric}Table!~!`, getResultsTable(results.table[metric]))
     });
     await fse.outputFile(path.resolve(__dirname, puppeteerFilePath), template, noop);
     await fse.writeJson(path.resolve(__dirname, puppeteerJSONPath), results, noop);
@@ -57,7 +58,8 @@ const updateReadmeFile = async () => {
     const buildResults = await fse.readJson(path.resolve(__dirname, getBuildStatsPath('all')), 'utf-8');
 
     [...responseMetrics, ...paintMetrics].forEach(metric => {
-        template = template.replace(`!~!${metric}!~!`, getResultsTable(puppeteerResults[metric]));
+        template = template.replace(`!~!${metric}Home!~!`, getResultsTable(puppeteerResults.home[metric]))
+        template = template.replace(`!~!${metric}Table!~!`, getResultsTable(puppeteerResults.table[metric]))
     });
 
     template = template.replace(/(!~!numberOfRequests!~!)/gm, numberOfRequests);

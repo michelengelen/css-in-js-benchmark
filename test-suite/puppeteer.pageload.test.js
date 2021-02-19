@@ -1,11 +1,20 @@
 const puppeteer = require('puppeteer');
 const {createServer, destroyServer} = require('../scripts/createServer');
 const {createPuppeteerResultsFile} = require('../scripts/createResults');
-const {libraries, responseMetrics, paintMetrics} = require('../benchConfig');
+const {libraries, responseMetrics, paintMetrics, serverPorts} = require('../benchConfig');
 
-const RESPONSE_RESULTS = {}
-const PAINT_RESULTS = {}
-const RESULTS = {}
+const RESPONSE_RESULTS = {
+    home: {},
+    table: {}
+}
+const PAINT_RESULTS = {
+    home: {},
+    table: {}
+}
+const RESULTS = {
+    home: {},
+    table: {}
+}
 
 const createBrowser = async () => {
     const browser = await puppeteer.launch();
@@ -48,15 +57,27 @@ const consecResponseTests = (page, libraryKeys) => {
 }
 
 const testPageResponse = async (page, key) => {
-    await page.goto(`http://localhost:1337/${key}`);
+    await page.goto(`http://localhost:${serverPorts[key]}/`);
 
-    const performanceTiming = JSON.parse(
+    const performanceHomeTiming = JSON.parse(
         await page.evaluate(() => JSON.stringify(window.performance.getEntries()))
     );
 
-    if (!RESPONSE_RESULTS[key]) RESPONSE_RESULTS[key] = [];
-    RESPONSE_RESULTS[key].push(extractDataFromPerformanceTiming(
-        performanceTiming[0] || {},
+    if (!RESPONSE_RESULTS.home[key]) RESPONSE_RESULTS.home[key] = [];
+    RESPONSE_RESULTS.home[key].push(extractDataFromPerformanceTiming(
+        performanceHomeTiming[0] || {},
+        ...responseMetrics
+    ));
+
+    await page.goto(`http://localhost:${serverPorts[key]}/table`);
+
+    const performanceTableTiming = JSON.parse(
+        await page.evaluate(() => JSON.stringify(window.performance.getEntries()))
+    );
+
+    if (!RESPONSE_RESULTS.table[key]) RESPONSE_RESULTS.table[key] = [];
+    RESPONSE_RESULTS.table[key].push(extractDataFromPerformanceTiming(
+        performanceTableTiming[0] || {},
         ...responseMetrics
     ));
 }
@@ -71,34 +92,50 @@ const testPageFirstPaint = async (page, key) => {
     const client = await page.target().createCDPSession();
     await client.send('Performance.enable');
 
-    await page.goto(`http://localhost:1337/${key}`);
+    await page.goto(`http://localhost:${serverPorts[key]}/`);
 
     await page.waitForTimeout(1000);
-    const performanceMetrics = await client.send('Performance.getMetrics');
+    const performanceHomeMetrics = await client.send('Performance.getMetrics');
 
-    if (!PAINT_RESULTS[key]) PAINT_RESULTS[key] = []
-    PAINT_RESULTS[key].push(extractDataFromPerformanceMetrics(
-        performanceMetrics,
+    if (!PAINT_RESULTS.home[key]) PAINT_RESULTS.home[key] = []
+    PAINT_RESULTS.home[key].push(extractDataFromPerformanceMetrics(
+        performanceHomeMetrics,
+        ...paintMetrics
+    ));
+
+    await page.goto(`http://localhost:${serverPorts[key]}/table`);
+
+    await page.waitForTimeout(1000);
+    const performanceTableMetrics = await client.send('Performance.getMetrics');
+
+    if (!PAINT_RESULTS.table[key]) PAINT_RESULTS.table[key] = []
+    PAINT_RESULTS.table[key].push(extractDataFromPerformanceMetrics(
+        performanceTableMetrics,
         ...paintMetrics
     ));
 }
 
 const parseResults = async () => {
-    await [...responseMetrics, ...paintMetrics].forEach(metric => RESULTS[metric] = {})
+    await [...responseMetrics, ...paintMetrics].forEach(metric => {
+        RESULTS.home[metric] = {}
+        RESULTS.table[metric] = {}
+    })
     await libraries.forEach(library => {
-        if (PAINT_RESULTS[library]) {
-            paintMetrics.forEach(metric => createResultArray(PAINT_RESULTS[library], library, metric))
+        if (PAINT_RESULTS.home[library] && PAINT_RESULTS.table[library]) {
+            paintMetrics.forEach(metric => createResultArray(PAINT_RESULTS.home[library], library, metric, 'home'))
+            paintMetrics.forEach(metric => createResultArray(PAINT_RESULTS.table[library], library, metric, 'table'))
         }
-        if (RESPONSE_RESULTS[library]) {
-            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS[library], library, metric))
+        if (RESPONSE_RESULTS.home[library] && RESPONSE_RESULTS.table[library]) {
+            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS.home[library], library, metric, 'home'))
+            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS.table[library], library, metric, 'table'))
         }
     })
 }
 
-const createResultArray = (arr, library, metric) => {
-    if (!RESULTS[metric][library]) RESULTS[metric][library] = []
-    RESULTS[metric][library] = arr.map(x => x[metric])
-    RESULTS[metric][library].push(arr.reduce((a, b) => a + b[metric], 0) / arr.length)
+const createResultArray = (arr, library, metric, page) => {
+    if (!RESULTS[page][metric][library]) RESULTS[page][metric][library] = []
+    RESULTS[page][metric][library] = arr.map(x => x[metric])
+    RESULTS[page][metric][library].push(arr.reduce((a, b) => a + b[metric], 0) / arr.length)
 }
 
 createServer()
