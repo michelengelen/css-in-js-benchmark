@@ -16,7 +16,7 @@ const readmeFilePath = '../README.md';
 const getBuildStatsPath = (lib) => `../results/build-stats/${lib}.stats.json`;
 
 const noop = () => {};
-const getResultsTable = results => libraries.map(key => `|${key}|${results[key].reduce((a = '', result) => `${a}${result.toFixed(2)}|`, '')}`).reduce((a = '', b) => `${a}${b}\n`, '');
+const getResultsTable = results => libraries.map(key => `|${key}|${results[key].reduce((a = '', result) => `${a}${typeof result === 'number' ? `${result.toFixed(2)} ms` : result}|`, '')}`).reduce((a = '', b) => `${a}${b}\n`, '');
 
 const createNumberResultsFile = async (results) => {
     let template = await fse.readFile(path.resolve(__dirname, numberTemplatePath), 'utf-8');
@@ -42,7 +42,7 @@ const parseBuildResults = async () => {
     await libraries.forEach(library => {
         let data = fse.readJsonSync(path.resolve(__dirname, getBuildStatsPath(library)), 'utf-8');
         buildStats[library] = [
-            data.time, data.assets.reduce((a, b) => a + b.size, 0)
+            `${data.time} ms`, `${data.assets.reduce((a, b) => a + b.size, 0) / 1000} KB`
         ];
     });
     await fse.writeJson(path.resolve(__dirname, getBuildStatsPath('all')), buildStats, noop);

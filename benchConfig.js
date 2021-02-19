@@ -7,6 +7,10 @@ module.exports = {
         // "phantom",
         "typestyle",
     ],
+    serverPorts: {
+        "react-jss": 1337,
+        typestyle: 1338,
+    },
     responseMetrics: [
         'duration',
         'domInteractive',

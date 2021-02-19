@@ -6,7 +6,7 @@ const dayJS = require('dayjs')
 const {createServer, destroyServer} = require('../scripts/createServer')
 const {createNumberResultsFile} = require('../scripts/createResults')
 
-const {libraries, numberOfRequests} = require('../benchConfig')
+const {libraries, numberOfRequests, serverPorts} = require('../benchConfig')
 
 const RESULTS = {}
 
@@ -24,8 +24,8 @@ const consecRequest = (url, i = 0) => {
 const performTests = (library) => {
     let start = dayJS()
     console.log(`--> requesting ${numberOfRequests} times for ${library} started at ${start.format('HH:mm:ss')}`)
-    console.log(`--> start requesting: http://localhost:1337/${library}`)
-    return consecRequest(`http://localhost:1337/${library}/`)
+    console.log(`--> start requesting: http://localhost:${serverPorts[library]}`)
+    return consecRequest(`http://localhost:${serverPorts[library]}/`)
         .then(() => {
             if (!RESULTS[library]) RESULTS[library] = []
             const time = dayJS().valueOf() - start.valueOf()
@@ -83,7 +83,7 @@ createServer().then(() => {
                 console.log('--> Preparing to shutdown!')
                 console.log('---------------------------------')
                 setTimeout(() => {
-                    destroyServer()
+                    // destroyServer()
                 }, 2000)
             })
             .catch((error) => {
