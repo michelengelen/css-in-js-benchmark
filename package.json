@@ -4,14 +4,14 @@
   "description": "Benchmarking CSS-in-JS libraries",
   "main": "index.js",
   "scripts": {
-    "build-aphrodite": "webpack --config webpack-config/webpack.aphrodite.config.js --json=results/build-stats/aphrodite.stats.json && node scripts/updateReadme.js",
-    "build-emotion": "webpack --config webpack-config/webpack.emotion.config.js --json=results/build-stats/emotion.stats.json && node scripts/updateReadme.js",
+    "build-aphrodite": "webpack --config webpack-config/aphrodite.config.js --json=results/build-stats/aphrodite.stats.json && node scripts/updateReadme.js",
+    "build-emotion": "webpack --config webpack-config/emotion.config.js --json=results/build-stats/emotion.stats.json && node scripts/updateReadme.js",
     "build-react-jss": "webpack --config webpack-config/react-jss.config.js --json=results/build-stats/react-jss.stats.json && node scripts/updateReadme.js",
-    "build-styled-components": "webpack --config webpack-config/webpack.styled-components.config.js --json=results/build-stats/styled-components.stats.json && node scripts/updateReadme.js",
+    "build-styled-components": "webpack --config webpack-config/styled-components.config.js --json=results/build-stats/styled-components.stats.json && node scripts/updateReadme.js",
     "build-typestyle": "webpack --config webpack-config/typestyle.config.js --json=results/build-stats/typestyle.stats.json && node scripts/updateReadme.js",
     "number-bench": "node test-suite/number.requests.test.js",
     "puppeteer-bench": "node test-suite/puppeteer.pageload.test.js",
-    "build-all": "npm run build-react-jss && npm run build-typestyle",
+    "build-all": "npm run build-react-jss && npm run build-typestyle && npm run build-styled-components",
     "bench-all": "npm run number-bench && npm run puppeteer-bench"
   },
   "dependencies": {
@@ -39,7 +39,8 @@
     "style-loader": "^2.0.0",
     "typestyle": "^2.1.0",
     "webpack": "^5.22.0",
-    "webpack-cli": "^4.5.0"
+    "webpack-cli": "^4.5.0",
+    "styled-components": "^5.2.1"
   },
   "keywords": [
     "bechmark",

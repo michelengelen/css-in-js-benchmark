@@ -17,8 +17,9 @@ all metrics are measured in ms
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|26.65 ms|20.98 ms|27.79 ms|25.14 ms|
-|typestyle|23.54 ms|40.90 ms|23.07 ms|29.17 ms|
+|react-jss|26.14 ms|18.63 ms|24.74 ms|23.17 ms|
+|styled-components|22.25 ms|43.14 ms|27.40 ms|30.93 ms|
+|typestyle|26.03 ms|29.50 ms|19.97 ms|25.17 ms|
 
 
 **First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded.  It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
@@ -29,8 +30,9 @@ all metrics are measured in ms
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|72.99 ms|21.74 ms|17.85 ms|37.53 ms|
-|typestyle|34.73 ms|18.05 ms|14.39 ms|22.39 ms|
+|react-jss|63.91 ms|16.07 ms|15.94 ms|31.97 ms|
+|styled-components|21.82 ms|17.40 ms|16.34 ms|18.52 ms|
+|typestyle|17.56 ms|17.06 ms|17.44 ms|17.35 ms|
 
 
 The **domComplete** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to complete.
@@ -41,8 +43,9 @@ The **domComplete** `read-only` property returns a `timestamp` representing the 
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|61.19 ms|21.36 ms|16.63 ms|33.06 ms|
-|typestyle|34.55 ms|17.86 ms|14.29 ms|22.23 ms|
+|react-jss|63.72 ms|15.93 ms|15.75 ms|31.80 ms|
+|styled-components|21.57 ms|17.21 ms|16.11 ms|18.30 ms|
+|typestyle|17.40 ms|16.85 ms|17.22 ms|17.16 ms|
 
 
 The **domInteractive** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to interactive.
@@ -53,8 +56,9 @@ The **domInteractive** `read-only` property returns a `timestamp` representing t
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|61.21 ms|21.39 ms|16.67 ms|33.09 ms|
-|typestyle|34.59 ms|17.88 ms|14.31 ms|22.26 ms|
+|react-jss|63.75 ms|15.94 ms|15.78 ms|31.82 ms|
+|styled-components|21.61 ms|17.23 ms|16.13 ms|18.33 ms|
+|typestyle|17.43 ms|16.87 ms|17.24 ms|17.18 ms|
 
 
 The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` representing the time value equal to the time immediately after the current document's `DOMContentLoaded` event completes.
@@ -65,8 +69,9 @@ The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` repr
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|72.99 ms|21.74 ms|17.85 ms|37.53 ms|
-|typestyle|34.74 ms|18.05 ms|14.40 ms|22.40 ms|
+|react-jss|63.91 ms|16.07 ms|15.95 ms|31.98 ms|
+|styled-components|21.83 ms|17.40 ms|16.37 ms|18.53 ms|
+|typestyle|17.56 ms|17.06 ms|17.45 ms|17.35 ms|
 
 
 In this case we are measuring the **duration** for the `navigation` performance type. It returns the `timestamp` that is the difference between the `PerformanceNavigationTiming.loadEventEnd` and `PerformanceEntry.startTime` properties, respectively

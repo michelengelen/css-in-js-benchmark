@@ -40,6 +40,6 @@ export const tableStyles = {
         textAlign: 'center',
         padding: '18px 10px 14px 25px',
         backgroundColor: 'rgba(0, 0, 0, .2)',
-        border: '1px solid rgba(0, 0, 0, .2)'
+        borderBottom: '1px solid rgba(0, 0, 0, .2)'
     }
 }
