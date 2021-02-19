@@ -148,7 +148,8 @@ Time To Complete !~!numberOfRequests!~! consecutive requests
 - [x] add styled-components
 - [ ] add theming tests
 - [ ] add better console output while testing
-- [ ] add chalk for coloring console outputs
+- [x] add chalk for coloring console outputs
+- [ ] add logging for puppeteer tests
 
 ---
 
