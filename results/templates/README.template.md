@@ -142,13 +142,13 @@ Time To Complete !~!numberOfRequests!~! consecutive requests
 
 ## ToDo
 
-[] add sass
-[] add aphrodite
-[] add emotion
-[] add styled-components
-[] add theming tests
-[] add better console output while testing
-[] add chalk for coloring console outputs
+- [ ] add sass
+- [ ] add aphrodite
+- [ ] add emotion
+- [x] add styled-components
+- [ ] add theming tests
+- [ ] add better console output while testing
+- [ ] add chalk for coloring console outputs
 
 ---
 

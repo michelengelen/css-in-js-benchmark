@@ -178,16 +178,17 @@ Time To Complete 2000 consecutive requests
 |styled-components|1482.00 ms|1893.00 ms|1485.00 ms|1620.00 ms|
 |typestyle|1857.00 ms|1557.00 ms|1832.00 ms|1748.67 ms|
 
+---
 
 ## ToDo
 
-[] add sass
-[] add aphrodite
-[] add emotion
-[] add styled-components
-[] add theming tests
-[] add better console output while testing
-[] add chalk for coloring console outputs
+- [ ] add sass
+- [ ] add aphrodite
+- [ ] add emotion
+- [x] add styled-components
+- [ ] add theming tests
+- [ ] add better console output while testing
+- [ ] add chalk for coloring console outputs
 
 ---
 
