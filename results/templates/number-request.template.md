@@ -14,9 +14,21 @@ npm run number-bench
 
 #### Results
 
+!~!numberOfRequests!~! requests to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!numberOfRequestsResults!~!
+!~!numberOfHomeRequestsResults!~!
+
+---
+
+#### Results
+
+!~!numberOfRequests!~! requests to `/table` (rendering a table with 500 rows)
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!numberOfTableRequestsResults!~!
 
 ---
 

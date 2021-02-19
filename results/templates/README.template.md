@@ -80,11 +80,25 @@ In this case we are measuring the **duration** for the `navigation` performance 
 
 Time To Complete !~!numberOfRequests!~! consecutive requests
 
+---
+
+#### Simple Component
+
+!~!numberOfRequests!~! requests to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-!~!numberOfRequestsResults!~!
+!~!numberOfHomeRequestsResults!~!
 
 ---
+
+#### Long Table Component
+
+!~!numberOfRequests!~! requests to `/table` (rendering a table with 500 rows)
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+!~!numberOfTableRequestsResults!~!
 
 ## ToDo
 

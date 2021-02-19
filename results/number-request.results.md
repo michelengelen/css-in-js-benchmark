@@ -14,10 +14,24 @@ npm run number-bench
 
 #### Results
 
+2000 requests to `/`
+
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|2316.00 ms|1553.00 ms|1461.00 ms|1776.67 ms|
-|typestyle|2039.00 ms|1554.00 ms|1670.00 ms|1754.33 ms|
+|react-jss|1959.00 ms|1421.00 ms|22618.00 ms|8666.00 ms|
+|typestyle|1492.00 ms|1387.00 ms|2108.00 ms|1662.33 ms|
+
+
+---
+
+#### Results
+
+2000 requests to `/table` (rendering a table with 500 rows)
+
+|library|1. run|2. run|3. run|average|
+|-------|-----:|-----:|-----:|------:|
+|react-jss|1804.00 ms|1628.00 ms|3094.00 ms|2175.33 ms|
+|typestyle|1686.00 ms|2904.00 ms|2387.00 ms|2325.67 ms|
 
 
 ---
