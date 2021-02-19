@@ -161,9 +161,9 @@ Time To Complete 1000 consecutive requests
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|947.00 ms|685.00 ms|745.00 ms|792.33 ms|
-|styled-components|976.00 ms|698.00 ms|678.00 ms|784.00 ms|
-|typestyle|729.00 ms|841.00 ms|709.00 ms|759.67 ms|
+|react-jss|972.00 ms|718.00 ms|802.00 ms|830.67 ms|
+|styled-components|924.00 ms|695.00 ms|715.00 ms|778.00 ms|
+|typestyle|851.00 ms|792.00 ms|675.00 ms|772.67 ms|
 
 
 ---
@@ -174,9 +174,9 @@ Time To Complete 1000 consecutive requests
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|1108.00 ms|740.00 ms|767.00 ms|871.67 ms|
-|styled-components|959.00 ms|797.00 ms|709.00 ms|821.67 ms|
-|typestyle|756.00 ms|863.00 ms|801.00 ms|806.67 ms|
+|react-jss|884.00 ms|779.00 ms|875.00 ms|846.00 ms|
+|styled-components|959.00 ms|815.00 ms|702.00 ms|825.33 ms|
+|typestyle|799.00 ms|935.00 ms|765.00 ms|833.00 ms|
 
 
 ## ToDo

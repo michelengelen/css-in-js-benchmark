@@ -64,47 +64,47 @@ const performTests = (library) => {
 
 createServer().then(() => {
     //Wait a bit for the the express server to launch and initialize
-    console.log('-----------------------------------------------')
+    console.log('-'.repeat(process.stdout.columns))
     console.log('')
     console.log(chalk.white(`${chalk.green('~~~')} Preparing Consecutive Request Benchmark ${chalk.green('~~~')}`))
     console.log('')
-    console.log('-----------------------------------------------')
+    console.log('-'.repeat(process.stdout.columns))
     setTimeout(() => {
         //We start our tests
         console.log('')
-        console.log('---------------------------------')
+        console.log('-'.repeat(process.stdout.columns))
         console.log(`${chalk.bgGreen.bold.black(' --> ')} Starting 1. run`)
         console.log('')
         consecTests([...libraries])
             .then(() => {
                 console.log('')
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log('--- Starting 2. run')
                 console.log('')
                 return consecTests([...libraries])
             })
             .then(() => {
                 console.log('')
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log('--- Starting 3. run')
                 console.log('')
                 return consecTests([...libraries])
             })
             .then(() => {
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log(`${chalk.bgGreen.bold.black(' --> ')} Test runs finished`)
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log('')
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log(`${chalk.bgGreen.bold.black(' --> ')} Writing results markdown file`)
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 return createNumberResultsFile(RESULTS)
             })
             .then(() => {
                 //Wait for any asynchronous errors
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 console.log(`${chalk.bgGreen.bold.black(' --> ')} Preparing to shutdown!`)
-                console.log('---------------------------------')
+                console.log('-'.repeat(process.stdout.columns))
                 setTimeout(() => {
                     destroyServer()
                 }, 2000)
