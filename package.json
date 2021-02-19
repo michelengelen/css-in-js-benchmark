@@ -27,6 +27,8 @@
     "@emotion/react": "^11.1.5",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
+    "chalk": "^4.1.0",
+    "css-loader": "^5.0.2",
     "dayjs": "^1.10.4",
     "express": "^4.17.1",
     "fs-extra": "^9.1.0",
@@ -37,10 +39,10 @@
     "react-jss": "^10.5.1",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
+    "styled-components": "^5.2.1",
     "typestyle": "^2.1.0",
     "webpack": "^5.22.0",
-    "webpack-cli": "^4.5.0",
-    "styled-components": "^5.2.1"
+    "webpack-cli": "^4.5.0"
   },
   "keywords": [
     "bechmark",

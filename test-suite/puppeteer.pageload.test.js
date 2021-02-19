@@ -1,4 +1,5 @@
 const puppeteer = require('puppeteer');
+const chalk = require('chalk');
 const {createServer, destroyServer} = require('../scripts/createServer');
 const {createPuppeteerResultsFile} = require('../scripts/createResults');
 const {libraries, responseMetrics, paintMetrics, serverPorts} = require('../benchConfig');
