@@ -18,9 +18,10 @@ npm run number-bench
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|972.00 ms|718.00 ms|802.00 ms|830.67 ms|
-|styled-components|924.00 ms|695.00 ms|715.00 ms|778.00 ms|
-|typestyle|851.00 ms|792.00 ms|675.00 ms|772.67 ms|
+|sass|976.00 ms|771.00 ms|20660.00 ms|7469.00 ms|
+|react-jss|824.00 ms|814.00 ms|1480.00 ms|1039.33 ms|
+|styled-components|863.00 ms|710.00 ms|783.00 ms|785.33 ms|
+|typestyle|834.00 ms|790.00 ms|1652.00 ms|1092.00 ms|
 
 
 ---
@@ -31,9 +32,10 @@ npm run number-bench
 
 |library|1. run|2. run|3. run|average|
 |-------|-----:|-----:|-----:|------:|
-|react-jss|884.00 ms|779.00 ms|875.00 ms|846.00 ms|
-|styled-components|959.00 ms|815.00 ms|702.00 ms|825.33 ms|
-|typestyle|799.00 ms|935.00 ms|765.00 ms|833.00 ms|
+|sass|896.00 ms|832.00 ms|1461.00 ms|1063.00 ms|
+|react-jss|890.00 ms|918.00 ms|1542.00 ms|1116.67 ms|
+|styled-components|891.00 ms|823.00 ms|1732.00 ms|1148.67 ms|
+|typestyle|849.00 ms|714.00 ms|1285.00 ms|949.33 ms|
 
 
 ---

@@ -1,7 +1,7 @@
 module.exports = {
     libraries: [
-        // "sass",
         "react-jss",
+        "sass",
         //"emotion",
         "styled-components",
         // "phantom",
@@ -9,8 +9,9 @@ module.exports = {
     ],
     serverPorts: {
         "react-jss": 1337,
-        "styled-components": 1338,
-        typestyle: 1339,
+        sass: 1338,
+        "styled-components": 1339,
+        typestyle: 1340,
     },
     responseMetrics: [
         'duration',

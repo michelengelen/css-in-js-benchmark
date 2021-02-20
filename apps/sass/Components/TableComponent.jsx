@@ -1,12 +1,9 @@
 'use strict'
 
-import React from 'react'
-import {style} from 'typestyle'
-import {createUseStyles} from "react-jss";
-import {tableStyles} from '../../testStyles';
-import {getRandomInt} from '../../../utils/helpers'
+import React from 'react';
+import {getRandomInt} from '../../../utils/helpers';
 
-const useStyles = createUseStyles(tableStyles)
+import './styles.table.scss';
 
 const dummyData = [
     'Lorem',
@@ -26,11 +23,10 @@ const dummyData = [
 const rows = new Array(500).fill('row');
 
 const TableExample = () => {
-    const classes = useStyles()
     return (
-        <table className={classes.table}>
+        <table className={'tableExample'}>
             <thead>
-            {dummyData.map((data, index) => <th className={classes.th} key={data + index}>{data}</th>)}
+            {dummyData.map((data, index) => <th key={data + index}>{data}</th>)}
             </thead>
             <tbody>
             {rows.map((row, a) => {
