@@ -10,8 +10,6 @@ npm run build-all
 
 ---
 
-|library|build time|build size|
-|-------|-----:|-----:|
 !~!buildResults!~!
 
 ---
@@ -118,14 +116,14 @@ Time To Complete !~!numberOfRequests!~! consecutive requests
 
 ## ToDo
 
-- [ ] add sass
+- [x] add sass
 - [ ] add aphrodite
 - [ ] add emotion
 - [x] add styled-components
 - [ ] add theming tests
-- [ ] add better console output while testing
+- [x] add better console output while testing
 - [x] add chalk for coloring console outputs
-- [ ] add logging for puppeteer tests
+- [x] add logging for puppeteer tests
 
 ---
 

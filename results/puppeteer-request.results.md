@@ -18,21 +18,21 @@ all metrics are measured in ms
 request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|40.20 ms|34.13 ms|37.53 ms|44.16 ms|39.02 ms|39.01 ms|
-|sass|45.49 ms|44.02 ms|47.83 ms|50.05 ms|56.51 ms|48.78 ms|
-|styled-components|48.65 ms|48.68 ms|44.34 ms|55.52 ms|50.03 ms|49.44 ms|
-|typestyle|59.39 ms|54.33 ms|52.99 ms|41.52 ms|54.10 ms|52.47 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|38.83 ms|43.74 ms|42.40 ms|44.08 ms|40.54 ms|41.92 ms|
+|sass|54.31 ms|59.08 ms|46.74 ms|55.63 ms|50.85 ms|53.32 ms|
+|styled-components|54.26 ms|51.80 ms|55.00 ms|53.56 ms|50.32 ms|52.99 ms|
+|typestyle|50.30 ms|60.04 ms|56.40 ms|44.93 ms|54.09 ms|53.15 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|202.14 ms|197.66 ms|180.75 ms|203.70 ms|176.50 ms|192.15 ms|
-|sass|250.21 ms|213.80 ms|249.69 ms|227.79 ms|258.68 ms|240.04 ms|
-|styled-components|249.94 ms|213.08 ms|255.65 ms|218.92 ms|256.33 ms|238.79 ms|
-|typestyle|316.97 ms|311.07 ms|277.54 ms|352.30 ms|278.77 ms|307.33 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|210.85 ms|189.71 ms|208.37 ms|182.68 ms|200.48 ms|198.42 ms|
+|sass|220.90 ms|257.17 ms|225.81 ms|266.84 ms|221.09 ms|238.36 ms|
+|styled-components|224.45 ms|225.72 ms|257.15 ms|252.91 ms|215.05 ms|235.06 ms|
+|typestyle|346.67 ms|278.31 ms|305.53 ms|324.60 ms|280.38 ms|307.10 ms|
 
 
 **First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded.  It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
@@ -44,21 +44,21 @@ request to `/table`
 request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.69 ms|46.92 ms|47.58 ms|48.39 ms|46.63 ms|51.24 ms|
-|sass|59.76 ms|35.81 ms|38.65 ms|36.50 ms|39.21 ms|41.99 ms|
-|styled-components|58.76 ms|36.89 ms|36.03 ms|27.87 ms|36.03 ms|39.12 ms|
-|typestyle|50.92 ms|26.13 ms|28.37 ms|26.09 ms|27.26 ms|31.76 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|62.87 ms|50.96 ms|49.72 ms|48.91 ms|43.19 ms|51.13 ms|
+|sass|54.00 ms|36.01 ms|37.71 ms|36.88 ms|39.58 ms|40.84 ms|
+|styled-components|55.18 ms|36.19 ms|35.36 ms|29.47 ms|36.28 ms|38.50 ms|
+|typestyle|48.12 ms|26.34 ms|29.79 ms|30.44 ms|29.14 ms|32.76 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|224.43 ms|105.26 ms|98.84 ms|181.00 ms|184.93 ms|158.89 ms|
-|sass|251.46 ms|238.98 ms|240.27 ms|215.33 ms|256.08 ms|240.43 ms|
-|styled-components|246.22 ms|225.20 ms|242.92 ms|208.10 ms|230.47 ms|230.58 ms|
-|typestyle|90.23 ms|81.54 ms|92.84 ms|78.90 ms|86.92 ms|86.09 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|216.87 ms|100.49 ms|102.15 ms|102.89 ms|198.46 ms|144.17 ms|
+|sass|215.09 ms|217.28 ms|208.49 ms|211.20 ms|245.10 ms|219.43 ms|
+|styled-components|210.84 ms|220.80 ms|232.97 ms|207.53 ms|252.34 ms|224.89 ms|
+|typestyle|83.62 ms|84.34 ms|95.62 ms|84.02 ms|91.50 ms|87.82 ms|
 
 
 The **domComplete** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to complete.
@@ -70,21 +70,21 @@ The **domComplete** `read-only` property returns a `timestamp` representing the 
 request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.49 ms|46.71 ms|47.35 ms|48.18 ms|46.44 ms|51.03 ms|
-|sass|58.68 ms|35.39 ms|38.25 ms|33.54 ms|38.70 ms|40.91 ms|
-|styled-components|57.60 ms|36.28 ms|35.54 ms|27.46 ms|34.78 ms|38.33 ms|
-|typestyle|50.67 ms|25.94 ms|28.17 ms|25.88 ms|27.03 ms|31.54 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|62.63 ms|50.77 ms|49.49 ms|48.65 ms|42.99 ms|50.91 ms|
+|sass|52.97 ms|35.64 ms|37.30 ms|34.05 ms|38.40 ms|39.67 ms|
+|styled-components|54.10 ms|34.94 ms|34.90 ms|29.05 ms|35.79 ms|37.76 ms|
+|typestyle|47.89 ms|26.15 ms|29.59 ms|30.18 ms|28.93 ms|32.55 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|81.96 ms|69.90 ms|67.98 ms|67.14 ms|64.52 ms|70.30 ms|
-|sass|124.21 ms|111.98 ms|113.71 ms|109.61 ms|135.52 ms|119.01 ms|
-|styled-components|119.04 ms|113.68 ms|123.07 ms|101.66 ms|114.87 ms|114.47 ms|
-|typestyle|66.67 ms|61.47 ms|66.77 ms|59.31 ms|64.58 ms|63.76 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|78.14 ms|68.43 ms|69.55 ms|70.03 ms|71.28 ms|71.48 ms|
+|sass|111.29 ms|110.87 ms|107.61 ms|108.18 ms|118.02 ms|111.19 ms|
+|styled-components|106.99 ms|113.41 ms|109.20 ms|101.11 ms|125.71 ms|111.29 ms|
+|typestyle|63.41 ms|63.17 ms|70.15 ms|63.28 ms|67.97 ms|65.60 ms|
 
 
 The **domInteractive** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to interactive.
@@ -96,21 +96,21 @@ The **domInteractive** `read-only` property returns a `timestamp` representing t
 request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.51 ms|46.75 ms|47.41 ms|48.20 ms|46.47 ms|51.07 ms|
-|sass|58.72 ms|35.43 ms|38.29 ms|33.61 ms|38.74 ms|40.96 ms|
-|styled-components|57.63 ms|36.35 ms|35.61 ms|27.49 ms|34.82 ms|38.38 ms|
-|typestyle|50.71 ms|25.98 ms|28.21 ms|25.93 ms|27.08 ms|31.58 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|62.68 ms|50.80 ms|49.55 ms|48.73 ms|43.02 ms|50.95 ms|
+|sass|53.00 ms|35.69 ms|37.34 ms|34.08 ms|38.44 ms|39.71 ms|
+|styled-components|54.15 ms|34.97 ms|34.93 ms|29.10 ms|35.82 ms|37.79 ms|
+|typestyle|47.96 ms|26.19 ms|29.63 ms|30.22 ms|28.98 ms|32.60 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|82.01 ms|69.93 ms|68.02 ms|67.18 ms|64.54 ms|70.33 ms|
-|sass|124.25 ms|112.02 ms|113.75 ms|109.65 ms|135.57 ms|119.05 ms|
-|styled-components|119.07 ms|113.71 ms|123.13 ms|101.70 ms|114.90 ms|114.50 ms|
-|typestyle|66.70 ms|61.50 ms|66.82 ms|59.34 ms|64.62 ms|63.80 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|78.17 ms|68.46 ms|69.58 ms|70.06 ms|71.31 ms|71.51 ms|
+|sass|111.31 ms|110.93 ms|107.65 ms|108.22 ms|118.05 ms|111.23 ms|
+|styled-components|107.02 ms|113.46 ms|109.25 ms|101.14 ms|125.77 ms|111.33 ms|
+|typestyle|63.45 ms|63.21 ms|70.20 ms|63.32 ms|68.01 ms|65.64 ms|
 
 
 The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` representing the time value equal to the time immediately after the current document's `DOMContentLoaded` event completes.
@@ -122,21 +122,21 @@ The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` repr
 request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.70 ms|46.93 ms|47.59 ms|48.41 ms|46.64 ms|51.25 ms|
-|sass|59.76 ms|35.81 ms|38.67 ms|36.50 ms|39.21 ms|41.99 ms|
-|styled-components|58.77 ms|36.89 ms|36.04 ms|27.88 ms|36.04 ms|39.12 ms|
-|typestyle|50.93 ms|26.13 ms|28.38 ms|26.10 ms|27.26 ms|31.76 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|62.87 ms|50.96 ms|49.72 ms|48.91 ms|43.19 ms|51.13 ms|
+|sass|54.00 ms|36.02 ms|37.72 ms|36.89 ms|39.58 ms|40.84 ms|
+|styled-components|55.18 ms|36.20 ms|35.36 ms|29.47 ms|36.29 ms|38.50 ms|
+|typestyle|48.12 ms|26.34 ms|29.80 ms|30.44 ms|29.15 ms|32.77 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
-|------|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|224.43 ms|105.27 ms|98.85 ms|181.02 ms|184.94 ms|158.90 ms|
-|sass|251.47 ms|238.99 ms|240.28 ms|215.34 ms|256.08 ms|240.43 ms|
-|styled-components|246.24 ms|225.21 ms|242.95 ms|208.11 ms|230.48 ms|230.60 ms|
-|typestyle|90.24 ms|81.55 ms|92.84 ms|78.91 ms|86.93 ms|86.10 ms|
+|:-----|-----:|-----:|-----:|-----:|-----:|-----:|
+|react-jss|216.88 ms|100.50 ms|102.16 ms|102.90 ms|198.46 ms|144.18 ms|
+|sass|215.09 ms|217.29 ms|208.50 ms|211.22 ms|245.10 ms|219.44 ms|
+|styled-components|210.86 ms|220.80 ms|232.98 ms|207.54 ms|252.34 ms|224.90 ms|
+|typestyle|83.63 ms|84.34 ms|95.63 ms|84.04 ms|91.51 ms|87.83 ms|
 
 
 In this case we are measuring the **duration** for the `navigation` performance type. It returns the `timestamp` that is the difference between the `PerformanceNavigationTiming.loadEventEnd` and `PerformanceEntry.startTime` properties, respectively

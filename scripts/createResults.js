@@ -17,8 +17,11 @@ const getBuildStatsPath = (lib) => `../results/build-stats/${lib}.stats.json`;
 
 const noop = () => {};
 
+const getBuildResultsTable = results => getBuildResultsHeader() + getResultsContent(results)
+const getBuildResultsHeader = () => `|library|build time|build size|\n|:-----|-----:|-----:|\n`;
+
 const getResultsTable = results => getResultsHeader(results[libraries[0]]) + getResultsContent(results);
-const getResultsHeader = results => `|library|${results.map((_, i) => (i + 1) !== results.length ? `${i + 1}. run|` :  `average|`).join('')}\n|------|${results.reduce(a => `${a}-----:|`, '')}\n`;
+const getResultsHeader = results => `|library|${results.map((_, i) => (i + 1) !== results.length ? `${i + 1}. run|` :  `average|`).join('')}\n|:-----|${results.reduce(a => `${a}-----:|`, '')}\n`;
 const getResultsContent = results => libraries.map(key => `|${key}|${results[key].reduce((a = '', result) => `${a}${typeof result === 'number' ? `${result.toFixed(2)} ms` : result}|`, '')}`).reduce((a = '', b) => `${a}${b}\n`, '');
 
 const createNumberResultsFile = async (results) => {
@@ -68,7 +71,7 @@ const updateReadmeFile = async () => {
     template = template.replace(/(!~!numberOfRequests!~!)/gm, numberOfRequests);
     template = template.replace('!~!numberOfHomeRequestsResults!~!', getResultsTable(requestsResults.home));
     template = template.replace('!~!numberOfTableRequestsResults!~!', getResultsTable(requestsResults.table));
-    template = template.replace('!~!buildResults!~!', getResultsTable(buildResults));
+    template = template.replace('!~!buildResults!~!', getBuildResultsTable(buildResults));
 
     await fse.outputFile(path.resolve(__dirname, readmeFilePath), template, noop);
 }
