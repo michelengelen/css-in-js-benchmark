@@ -22,5 +22,6 @@ module.exports = {
     paintMetrics: [
         'FirstMeaningfulPaint'
     ],
-    numberOfRequests: 1000,
+    numberOfRequests: 500,
+    numberOfIterations: 5,
 }

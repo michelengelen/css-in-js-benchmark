@@ -6,12 +6,28 @@ const dayJS = require('dayjs')
 
 const {createServer, destroyServer} = require('../scripts/createServer')
 const {createNumberResultsFile} = require('../scripts/createResults')
+const {printH1, printH2, printP} = require('../utils/helpers')
 
-const {libraries, numberOfRequests, serverPorts} = require('../benchConfig')
+const cloneDeep = require('lodash.clonedeep')
+
+const {libraries, numberOfRequests, serverPorts, numberOfIterations} = require('../benchConfig')
 
 const RESULTS = {
     home: {},
     table: {}
+}
+
+/**
+ * @param   {Function}    promise
+ * @param   {number}      iteration
+ * @param   {any}         rest
+ * @returns {Promise<*>}
+ */
+const consecIterations = (promise, iteration, ...rest) => {
+    printH2(`Starting ${iteration}. run`)
+    const _rest = cloneDeep(rest)
+    if (iteration === numberOfIterations) return promise(...rest);
+    return promise(...rest).then(() => consecIterations(promise, iteration + 1, ..._rest))
 }
 
 const consecTests = (libraryKeys) => {
@@ -25,35 +41,23 @@ const consecRequest = (url, i = 0) => {
     return axios.get(url).then(() => consecRequest(url, i + 1))
 }
 
-const performTests = (library) => {
-    let startHome = dayJS();
-    let startTable;
-    console.log(`${chalk.bgGreen.bold.black(' --> ')} requesting ${numberOfRequests} times for ${library} started at ${startHome.format('HH:mm:ss')}`)
-    console.log(`${chalk.bgGreen.bold.black(' --> ')} start requesting: http://localhost:${serverPorts[library]}`)
-    return consecRequest(`http://localhost:${serverPorts[library]}/`)
+const performTests = (lib) => {
+    return performTest(lib).then(() => performTest(lib, '/table'))
+}
+
+const performTest = (library, path = '/') => {
+    const start = dayJS();
+    const route = path[0] !== '/' ? `/${path}` : path
+    const metric = route === '/' ? 'home' : route.substring(1)
+    printP(`Requesting ${numberOfRequests} times for ${library} started at ${start.format('HH:mm:ss')}`)
+    printP(`start requesting: http://localhost:${serverPorts[library]}${route}`)
+    return consecRequest(`http://localhost:${serverPorts[library]}${route}`)
         .then(() => {
-            if (!RESULTS.home[library]) RESULTS.home[library] = []
-            const time = dayJS().valueOf() - startHome.valueOf()
-            RESULTS.home[library].push(time)
-            if (RESULTS.home[library].length === 3) RESULTS.home[library].push((RESULTS.home[library].reduce((a, b) => a + b) / RESULTS.home[library].length))
-            console.log('')
-            console.log(`${chalk.bgGreen.bold.black(' --> ')} ${library}: home-test completed after ${numberOfRequests} requests in ${dayJS().valueOf() - startHome.valueOf()} ms`)
-            console.log('')
-        })
-        .then(() => {
-            startTable = dayJS()
-            console.log(`${chalk.bgGreen.bold.black(' --> ')} requesting ${numberOfRequests} times for ${library} started at ${startTable.format('HH:mm:ss')}`)
-            console.log(`${chalk.bgGreen.bold.black(' --> ')} start requesting: http://localhost:${serverPorts[library]}/table`)
-        })
-        .then(() => consecRequest(`http://localhost:${serverPorts[library]}/table`))
-        .then(() => {
-            if (!RESULTS.table[library]) RESULTS.table[library] = []
-            const time = dayJS().valueOf() - startTable.valueOf()
-            RESULTS.table[library].push(time)
-            if (RESULTS.table[library].length === 3) RESULTS.table[library].push((RESULTS.table[library].reduce((a, b) => a + b) / RESULTS.table[library].length))
-            console.log('')
-            console.log(`${chalk.bgGreen.bold.black(' --> ')} ${library}: table-test completed after ${numberOfRequests} requests in ${dayJS().valueOf() - startTable.valueOf()} ms`)
-            console.log('')
+            const time = dayJS().valueOf() - start.valueOf()
+            if (!RESULTS[metric][library]) RESULTS[metric][library] = []
+            RESULTS[metric][library].push(time)
+            if (RESULTS[metric][library].length === numberOfIterations) RESULTS[metric][library].push((RESULTS[metric][library].reduce((a, b) => a + b) / RESULTS[metric][library].length))
+            printP(`${library}: tests for route ${chalk.yellow(route)} completed after ${chalk.yellow(numberOfRequests)} requests in ${chalk.yellow(dayJS().valueOf() - start.valueOf())} ms`, true)
         })
         .catch((error) => {
             destroyServer()
@@ -64,47 +68,17 @@ const performTests = (library) => {
 
 createServer().then(() => {
     //Wait a bit for the the express server to launch and initialize
-    console.log('-'.repeat(process.stdout.columns))
-    console.log('')
-    console.log(chalk.white(`${chalk.green('~~~')} Preparing Consecutive Request Benchmark ${chalk.green('~~~')}`))
-    console.log('')
-    console.log('-'.repeat(process.stdout.columns))
+    printH1('PREPARING CONSECUTIVE REQUEST BENCHMARK', true);
     setTimeout(() => {
         //We start our tests
-        console.log('')
-        console.log('-'.repeat(process.stdout.columns))
-        console.log(`${chalk.bgGreen.bold.black(' --> ')} Starting 1. run`)
-        console.log('')
-        consecTests([...libraries])
+        consecIterations(consecTests, 1, [...libraries])
             .then(() => {
-                console.log('')
-                console.log('-'.repeat(process.stdout.columns))
-                console.log('--- Starting 2. run')
-                console.log('')
-                return consecTests([...libraries])
-            })
-            .then(() => {
-                console.log('')
-                console.log('-'.repeat(process.stdout.columns))
-                console.log('--- Starting 3. run')
-                console.log('')
-                return consecTests([...libraries])
-            })
-            .then(() => {
-                console.log('-'.repeat(process.stdout.columns))
-                console.log(`${chalk.bgGreen.bold.black(' --> ')} Test runs finished`)
-                console.log('-'.repeat(process.stdout.columns))
-                console.log('')
-                console.log('-'.repeat(process.stdout.columns))
-                console.log(`${chalk.bgGreen.bold.black(' --> ')} Writing results markdown file`)
-                console.log('-'.repeat(process.stdout.columns))
+                printH2('Test runs finished')
+                printH2('Writing results markdown file')
                 return createNumberResultsFile(RESULTS)
             })
             .then(() => {
-                //Wait for any asynchronous errors
-                console.log('-'.repeat(process.stdout.columns))
-                console.log(`${chalk.bgGreen.bold.black(' --> ')} Preparing to shutdown!`)
-                console.log('-'.repeat(process.stdout.columns))
+                printH1('CONSECUTIVE REQUEST BENCHMARK FINISHED', true);
                 setTimeout(() => {
                     destroyServer()
                 }, 2000)

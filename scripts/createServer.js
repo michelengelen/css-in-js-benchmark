@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const express = require("express");
 const posix = require('posix');
 const {libraries, serverPorts} = require('../benchConfig')
+const {printH1, printH2, printH3, printP} = require('../utils/helpers')
 
 // raise maximum number of open file descriptors to 10k,
 // hard limit is left unchanged
@@ -12,23 +13,20 @@ posix.setrlimit('nofile', { soft: 100000 });
 const servers = {};
 
 const createServer = async () => {
-    console.log(chalk.white(`${chalk.green('~~~')} Setting up fresh servers for benchmarking ${chalk.green('~~~')}`))
-    console.log('')
+    printH3('Setting up fresh servers for benchmarking', true);
     try {
         await libraries.forEach((lib, i) => {
             servers[lib] = {}
             servers[lib].app = express();
             servers[lib].server = servers[lib].app.listen(serverPorts[lib], () => {
-                console.log(chalk.white(`${chalk.bgGreen.bold.black(' --> ')} Server starts listening on port ${chalk.red(serverPorts[lib])} for ${chalk.red(lib)}`))
+                printP(`Server starts listening on port ${chalk.red(serverPorts[lib])} for ${chalk.red(lib)}`)
             });
             servers[lib].app.use('/', express.static(`public/${lib}`))
             servers[lib].app.get('*', function(req, res) {
                 res.sendFile('index.html', {root: path.join(__dirname, `../public/${lib}`)});
             });
         })
-        console.log('')
-        console.log(chalk.white(`${chalk.green('~~~')} Setup finished ${chalk.green('~~~')}`))
-        console.log('')
+        printH3('Server setup finished', true)
     } catch (ex) {
         libraries.forEach((lib) => {
             if (servers[lib] && servers[lib].server) {
@@ -41,17 +39,14 @@ const createServer = async () => {
 }
 
 const destroyServer = () => {
-    console.log('')
-    console.log(chalk.white(`${chalk.green('~~~')} Benchmarking finished ${chalk.green('~~~')}`))
-    console.log('')
+    printH3('Preparing to close down servers', true)
     libraries.forEach((lib) => {
         if (servers[lib] && servers[lib].server) {
-            console.log(chalk.white(`${chalk.bgGreen.bold.black(' --> ')} closing server for ${chalk.red(lib)}`))
+            printP(`closing server for ${chalk.red(lib)}`)
             servers[lib].server.close()
         }
     })
-    console.log('')
-    console.log(chalk.white(`${chalk.green('~~~')} Server instances closed ${chalk.green('~~~')}`))
+    printH3('Server instances closed', true)
     console.log('')
     process.exit(0)
 }

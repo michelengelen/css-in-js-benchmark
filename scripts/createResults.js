@@ -16,7 +16,10 @@ const readmeFilePath = '../README.md';
 const getBuildStatsPath = (lib) => `../results/build-stats/${lib}.stats.json`;
 
 const noop = () => {};
-const getResultsTable = results => libraries.map(key => `|${key}|${results[key].reduce((a = '', result) => `${a}${typeof result === 'number' ? `${result.toFixed(2)} ms` : result}|`, '')}`).reduce((a = '', b) => `${a}${b}\n`, '');
+
+const getResultsTable = results => getResultsHeader(results[libraries[0]]) + getResultsContent(results);
+const getResultsHeader = results => `|library|${results.map((_, i) => (i + 1) !== results.length ? `${i + 1}. run|` :  `average|`).join('')}\n|------|${results.reduce(a => `${a}-----:|`, '')}\n`;
+const getResultsContent = results => libraries.map(key => `|${key}|${results[key].reduce((a = '', result) => `${a}${typeof result === 'number' ? `${result.toFixed(2)} ms` : result}|`, '')}`).reduce((a = '', b) => `${a}${b}\n`, '');
 
 const createNumberResultsFile = async (results) => {
     let template = await fse.readFile(path.resolve(__dirname, numberTemplatePath), 'utf-8');

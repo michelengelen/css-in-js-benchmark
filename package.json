@@ -33,6 +33,7 @@
     "dayjs": "^1.10.4",
     "express": "^4.17.1",
     "fs-extra": "^9.1.0",
+    "lodash.clonedeep": "^4.5.0",
     "node-sass": "^5.0.0",
     "phantom": "^6.3.0",
     "posix": "^4.2.0",
