@@ -36,18 +36,27 @@ const extractDataFromPerformanceTiming = (timing, ...dataNames) => {
     return extractedData;
 };
 
-const getTimeFromPerformanceMetrics = (metrics, name) =>
+const getValueFromPerformanceMetrics = (metrics, name) =>
     metrics.metrics.find(x => x.name === name).value * 1000;
 
 const extractDataFromPerformanceMetrics = (metrics, ...dataNames) => {
-    const navigationStart = getTimeFromPerformanceMetrics(
+    const navigationStart = getValueFromPerformanceMetrics(
         metrics,
         'NavigationStart'
     );
 
     const extractedData = {};
     dataNames.forEach(name => {
-        extractedData[name] = getTimeFromPerformanceMetrics(metrics, name) - navigationStart;
+        switch (true) {
+            case name.includes('Count'):
+                extractedData[name] = `${getValueFromPerformanceMetrics(metrics, name)}`
+                break;
+            case name.includes('Duration'):
+                extractedData[name] = getValueFromPerformanceMetrics(metrics, name)
+                break;
+            default:
+                extractedData[name] = getValueFromPerformanceMetrics(metrics, name) - navigationStart;
+        }
     });
 
     return extractedData;

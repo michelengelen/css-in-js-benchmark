@@ -38,6 +38,78 @@ request to `/table`
 
 ---
 
+`LayoutCount`
+
+request to `/`
+
+!~!LayoutCountHome!~!
+
+request to `/table`
+
+!~!LayoutCountTable!~!
+
+---
+
+`LayoutDuration`
+
+request to `/`
+
+!~!LayoutDurationHome!~!
+
+request to `/table`
+
+!~!LayoutDurationTable!~!
+
+---
+
+`RecalcStyleCount`
+
+request to `/`
+
+!~!RecalcStyleCountHome!~!
+
+request to `/table`
+
+!~!RecalcStyleCountTable!~!
+
+---
+
+`RecalcStyleDuration`
+
+request to `/`
+
+!~!RecalcStyleDurationHome!~!
+
+request to `/table`
+
+!~!RecalcStyleDurationTable!~!
+
+---
+
+`ScriptDuration`
+
+request to `/`
+
+!~!ScriptDurationHome!~!
+
+request to `/table`
+
+!~!ScriptDurationTable!~!
+
+---
+
+`TaskDuration`
+
+request to `/`
+
+!~!TaskDurationHome!~!
+
+request to `/table`
+
+!~!TaskDurationTable!~!
+
+---
+
 `domComplete`
 
 request to `/`
