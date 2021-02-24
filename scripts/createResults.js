@@ -23,7 +23,7 @@ const getBuildResultsHeader = () => `|library|build time|build size|\n|:-----|--
 const getResultsTable = results => getResultsHeader(results[libraries[0]]) + getResultsContent(results)
 const getResultsHeader = results =>
     `|library|${results
-        .map((_, i) => (i + 1 !== results.length ? `${i + 1}. run|` : `average|`))
+        .map((_, i) => (typeof _ === 'string' || i + 1 !== results.length ? `${i + 1}. run|` : `average|`))
         .join('')}\n|:-----|${results.reduce(a => `${a}-----:|`, '')}\n`
 const getResultsContent = results =>
     libraries
