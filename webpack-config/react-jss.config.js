@@ -1,15 +1,15 @@
-const path = require('path');
+const path = require('path')
 
 const resolve = dir => path.resolve(__dirname, dir)
 const library = 'react-jss'
 
 const options = {
     appRoot: `../apps/${library}`,
-    outPath: `../public/${library}/built`
+    outPath: `../public/${library}/built`,
 }
 
 module.exports = {
-    mode: "production",
+    mode: 'production',
     entry: resolve(`${options.appRoot}/entry.jsx`),
     output: {
         path: resolve(options.outPath),
@@ -25,8 +25,8 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
-                include: [resolve(options.appRoot)]
+                include: [resolve(options.appRoot)],
             },
         ],
     },
-};
+}

@@ -1,66 +1,62 @@
 const chalk = require('chalk')
-const puppeteer = require('puppeteer');
+const puppeteer = require('puppeteer')
 const cloneDeep = require('lodash.clonedeep')
-const {printH1, printH2, printH3, printP} = require('../utils/helpers')
-const {createServer, destroyServer} = require('../scripts/createServer');
-const {createPuppeteerResultsFile} = require('../scripts/createResults');
-const {libraries, responseMetrics, paintMetrics, serverPorts, numberOfIterations} = require('../benchConfig');
+const { printH1, printH2, printH3, printP } = require('../utils/helpers')
+const { createServer, destroyServer } = require('../scripts/createServer')
+const { createPuppeteerResultsFile } = require('../scripts/createResults')
+const { libraries, responseMetrics, paintMetrics, serverPorts, numberOfIterations } = require('../benchConfig')
 
 const RESPONSE_RESULTS = {
     home: {},
-    table: {}
+    table: {},
 }
 const PAINT_RESULTS = {
     home: {},
-    table: {}
+    table: {},
 }
 const RESULTS = {
     home: {},
-    table: {}
+    table: {},
 }
 
 const createBrowser = async () => {
-    const browser = await puppeteer.launch();
-    const page = await browser.newPage();
-    return {browser, page};
+    const browser = await puppeteer.launch()
+    const page = await browser.newPage()
+    return { browser, page }
 }
 
 const extractDataFromPerformanceTiming = (timing, ...dataNames) => {
-    const start = timing.redirectStart;
+    const start = timing.redirectStart
 
-    const extractedData = {};
+    const extractedData = {}
     dataNames.forEach(name => {
-        extractedData[name] = timing[name] - start;
-    });
+        extractedData[name] = timing[name] - start
+    })
 
-    return extractedData;
-};
+    return extractedData
+}
 
-const getValueFromPerformanceMetrics = (metrics, name) =>
-    metrics.metrics.find(x => x.name === name).value * 1000;
+const getValueFromPerformanceMetrics = (metrics, name) => metrics.metrics.find(x => x.name === name).value
 
 const extractDataFromPerformanceMetrics = (metrics, ...dataNames) => {
-    const navigationStart = getValueFromPerformanceMetrics(
-        metrics,
-        'NavigationStart'
-    );
+    const navigationStart = getValueFromPerformanceMetrics(metrics, 'NavigationStart')
 
-    const extractedData = {};
+    const extractedData = {}
     dataNames.forEach(name => {
         switch (true) {
             case name.includes('Count'):
                 extractedData[name] = `${getValueFromPerformanceMetrics(metrics, name)}`
-                break;
+                break
             case name.includes('Duration'):
-                extractedData[name] = getValueFromPerformanceMetrics(metrics, name)
-                break;
+                extractedData[name] = getValueFromPerformanceMetrics(metrics, name) * 1000
+                break
             default:
-                extractedData[name] = getValueFromPerformanceMetrics(metrics, name) - navigationStart;
+                extractedData[name] = (getValueFromPerformanceMetrics(metrics, name) - navigationStart) * 1000
         }
-    });
+    })
 
-    return extractedData;
-};
+    return extractedData
+}
 
 const consecResponseTests = (page, libraryKeys) => {
     printH3(`Testing page load responsiveness for ${libraryKeys[0]}`, true)
@@ -71,34 +67,30 @@ const consecResponseTests = (page, libraryKeys) => {
 
 const testPageResponse = async (page, key) => {
     printP(`Navigating to ${chalk.yellow(`http://localhost:${serverPorts[key]}/`)}`)
-    await page.goto(`http://localhost:${serverPorts[key]}/`);
+    await page.goto(`http://localhost:${serverPorts[key]}/`)
 
     printP('Fetching performance metrics')
-    const performanceHomeTiming = JSON.parse(
-        await page.evaluate(() => JSON.stringify(window.performance.getEntries()))
-    );
+    const performanceHomeTiming = JSON.parse(await page.evaluate(() => JSON.stringify(window.performance.getEntries())))
 
-    if (!RESPONSE_RESULTS.home[key]) RESPONSE_RESULTS.home[key] = [];
+    if (!RESPONSE_RESULTS.home[key]) RESPONSE_RESULTS.home[key] = []
     printP('Extracting performance metrics', true)
-    RESPONSE_RESULTS.home[key].push(extractDataFromPerformanceTiming(
-        performanceHomeTiming[0] || {},
-        ...responseMetrics
-    ));
+    RESPONSE_RESULTS.home[key].push(
+        extractDataFromPerformanceTiming(performanceHomeTiming[0] || {}, ...responseMetrics)
+    )
 
     printP(`Navigating to ${chalk.yellow(`http://localhost:${serverPorts[key]}/table`)}`)
-    await page.goto(`http://localhost:${serverPorts[key]}/table`);
+    await page.goto(`http://localhost:${serverPorts[key]}/table`)
 
     printP('Fetching performance metrics')
     const performanceTableTiming = JSON.parse(
         await page.evaluate(() => JSON.stringify(window.performance.getEntries()))
-    );
+    )
 
-    if (!RESPONSE_RESULTS.table[key]) RESPONSE_RESULTS.table[key] = [];
+    if (!RESPONSE_RESULTS.table[key]) RESPONSE_RESULTS.table[key] = []
     printP('Extracting performance metrics', true)
-    RESPONSE_RESULTS.table[key].push(extractDataFromPerformanceTiming(
-        performanceTableTiming[0] || {},
-        ...responseMetrics
-    ));
+    RESPONSE_RESULTS.table[key].push(
+        extractDataFromPerformanceTiming(performanceTableTiming[0] || {}, ...responseMetrics)
+    )
 }
 
 const consecPaintTests = (page, libraryKeys) => {
@@ -110,36 +102,30 @@ const consecPaintTests = (page, libraryKeys) => {
 
 const testPageFirstPaint = async (page, key) => {
     printP('Creating CDP session', true)
-    const client = await page.target().createCDPSession();
-    await client.send('Performance.enable');
+    const client = await page.target().createCDPSession()
+    await client.send('Performance.enable')
 
     printP(`Navigating to ${chalk.yellow(`http://localhost:${serverPorts[key]}/`)}`)
-    await page.goto(`http://localhost:${serverPorts[key]}/`);
+    await page.goto(`http://localhost:${serverPorts[key]}/`)
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1000)
     printP('Fetching performance metrics')
-    const performanceHomeMetrics = await client.send('Performance.getMetrics');
+    const performanceHomeMetrics = await client.send('Performance.getMetrics')
 
     if (!PAINT_RESULTS.home[key]) PAINT_RESULTS.home[key] = []
     printP('Extracting performance metrics', true)
-    PAINT_RESULTS.home[key].push(extractDataFromPerformanceMetrics(
-        performanceHomeMetrics,
-        ...paintMetrics
-    ));
+    PAINT_RESULTS.home[key].push(extractDataFromPerformanceMetrics(performanceHomeMetrics, ...paintMetrics))
 
     printP(`Navigating to ${chalk.yellow(`http://localhost:${serverPorts[key]}/table`)}`)
-    await page.goto(`http://localhost:${serverPorts[key]}/table`);
+    await page.goto(`http://localhost:${serverPorts[key]}/table`)
 
-    await page.waitForTimeout(1000);
+    await page.waitForTimeout(1000)
     printP('Fetching performance metrics')
-    const performanceTableMetrics = await client.send('Performance.getMetrics');
+    const performanceTableMetrics = await client.send('Performance.getMetrics')
 
     if (!PAINT_RESULTS.table[key]) PAINT_RESULTS.table[key] = []
     printP('Extracting performance metrics', true)
-    PAINT_RESULTS.table[key].push(extractDataFromPerformanceMetrics(
-        performanceTableMetrics,
-        ...paintMetrics
-    ));
+    PAINT_RESULTS.table[key].push(extractDataFromPerformanceMetrics(performanceTableMetrics, ...paintMetrics))
 }
 
 const parseResults = async () => {
@@ -153,8 +139,12 @@ const parseResults = async () => {
             paintMetrics.forEach(metric => createResultArray(PAINT_RESULTS.table[library], library, metric, 'table'))
         }
         if (RESPONSE_RESULTS.home[library] && RESPONSE_RESULTS.table[library]) {
-            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS.home[library], library, metric, 'home'))
-            responseMetrics.forEach(metric => createResultArray(RESPONSE_RESULTS.table[library], library, metric, 'table'))
+            responseMetrics.forEach(metric =>
+                createResultArray(RESPONSE_RESULTS.home[library], library, metric, 'home')
+            )
+            responseMetrics.forEach(metric =>
+                createResultArray(RESPONSE_RESULTS.table[library], library, metric, 'table')
+            )
         }
     })
 }
@@ -162,7 +152,9 @@ const parseResults = async () => {
 const createResultArray = (arr, library, metric, page) => {
     if (!RESULTS[page][metric][library]) RESULTS[page][metric][library] = []
     RESULTS[page][metric][library] = arr.map(x => x[metric])
-    RESULTS[page][metric][library].push(arr.reduce((a, b) => a + b[metric], 0) / arr.length)
+    if (!metric.includes('Count')) {
+        RESULTS[page][metric][library].push(arr.reduce((a, b) => a + b[metric], 0) / arr.length)
+    }
 }
 
 const runTests = (page, ...args) => {
@@ -180,14 +172,14 @@ const runTests = (page, ...args) => {
 const consecIterations = (promise, iteration, page, ...rest) => {
     printH2(`Starting ${iteration}. run`)
     const _rest = cloneDeep(rest)
-    if (iteration === numberOfIterations) return promise(page, ..._rest);
+    if (iteration === numberOfIterations) return promise(page, ..._rest)
     return promise(page, ...rest).then(() => consecIterations(promise, iteration + 1, page, ..._rest))
 }
 
 createServer()
     .then(() => printH1('PREPARING PUPPETEER PAGE-LOAD BENCHMARK', true))
     .then(() => createBrowser())
-    .then(({page, browser}) => {
+    .then(({ page, browser }) => {
         return consecIterations(runTests, 1, page, [...libraries])
             .then(() => parseResults())
             .then(() => {
@@ -197,10 +189,9 @@ createServer()
             })
             .then(() => browser)
     })
-    .then(async (browser) => {
-
+    .then(async browser => {
         await browser.close()
     })
     .then(() => printH1('PUPPETEER PAGE-LOAD BENCHMARK FINISHED', true))
     .then(() => destroyServer())
-    .catch((error) => console.log('--> !!! ERROR !!!', error))
+    .catch(error => console.log('--> !!! ERROR !!!', error))

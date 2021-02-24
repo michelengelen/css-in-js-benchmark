@@ -1,8 +1,8 @@
 'use strict'
 
 import React from 'react'
-import {style} from 'typestyle'
-import {exampleStyles} from '../../testStyles';
+import { style } from 'typestyle'
+import { exampleStyles } from '../../testStyles'
 
 const example = style(exampleStyles)
 

@@ -3,6 +3,7 @@
 ---
 
 #### Command To run the test
+
 ```bash
 npm run puppeteer-bench
 ```
@@ -23,7 +24,7 @@ request to `/table`
 
 !~!FirstMeaningfulPaintTable!~!
 
-**First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded.  It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
+**First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded. It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
 
 ---
 

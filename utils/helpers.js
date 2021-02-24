@@ -1,9 +1,9 @@
 const chalk = require('chalk')
 
 const getRandomInt = (min, max) => {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min) + min) //The maximum is exclusive and the minimum is inclusive
 }
 
 const printH1 = (text, padded = false) => {
@@ -31,10 +31,9 @@ const printH3 = (text, padded = false) => {
 }
 
 const printP = (text, padded = false) => {
-    console.log(`${chalk.bgGreen.bold.black(' --> ')} ${text}`);
+    console.log(`${chalk.bgGreen.bold.black(' --> ')} ${text}`)
     if (padded) console.log('')
 }
-
 
 module.exports = {
     getRandomInt,

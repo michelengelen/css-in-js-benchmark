@@ -6,15 +6,15 @@
 
 import React from 'react'
 import ReactDOM from 'react-dom'
-import {Provider} from 'react-redux'
-import {createStore} from 'redux'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
 
 import Router from './Components/Router'
-import {DummyStorage} from './Components/DummyStorage'
+import { DummyStorage } from './Components/DummyStorage'
 
 ReactDOM.render(
-    (<Provider store={createStore(DummyStorage)}>
+    <Provider store={createStore(DummyStorage)}>
         <Router />
-    </Provider>),
+    </Provider>,
     document.getElementById('react_app_root')
 )

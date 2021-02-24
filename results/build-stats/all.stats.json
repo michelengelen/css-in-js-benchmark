@@ -1,1 +1,7 @@
-{"react-jss":["4178 ms","234.411 KB"],"sass":["4286 ms","234.411 KB"],"styled-components":["3705 ms","209.407 KB"],"treat":["4257 ms","234.411 KB"],"typestyle":["3369 ms","186.487 KB"]}
+{
+    "react-jss": ["4178 ms", "234.411 KB"],
+    "sass": ["4286 ms", "234.411 KB"],
+    "styled-components": ["3705 ms", "209.407 KB"],
+    "treat": ["4257 ms", "234.411 KB"],
+    "typestyle": ["3369 ms", "186.487 KB"]
+}

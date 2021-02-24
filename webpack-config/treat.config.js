@@ -1,18 +1,18 @@
-const path = require('path');
+const path = require('path')
 
-const { TreatPlugin } = require('treat/webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { TreatPlugin } = require('treat/webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const resolve = dir => path.resolve(__dirname, dir)
 const library = 'react-jss'
 
 const options = {
     appRoot: `../apps/${library}`,
-    outPath: `../public/${library}/built`
+    outPath: `../public/${library}/built`,
 }
 
 module.exports = {
-    mode: "production",
+    mode: 'production',
     entry: resolve(`${options.appRoot}/entry.jsx`),
     output: {
         path: resolve(options.outPath),
@@ -28,14 +28,14 @@ module.exports = {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
                 use: ['babel-loader'],
-                include: [resolve(options.appRoot)]
+                include: [resolve(options.appRoot)],
             },
         ],
     },
     plugins: [
         new TreatPlugin({
-            outputLoaders: [MiniCssExtractPlugin.loader]
+            outputLoaders: [MiniCssExtractPlugin.loader],
         }),
-        new MiniCssExtractPlugin()
-    ]
-};
+        new MiniCssExtractPlugin(),
+    ],
+}

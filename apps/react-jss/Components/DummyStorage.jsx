@@ -1,6 +1,6 @@
 'use strict'
 
-import {DUMMY_ACTION} from './Actions'
+import { DUMMY_ACTION } from './Actions'
 
 export const DummyStorage = (state = {}, action) => {
     switch (action['cmd']) {

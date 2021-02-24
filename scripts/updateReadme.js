@@ -1,1 +1,3 @@
-require('./createResults').updateReadmeFile().then(() => console.log('--> README.ms updated successfully'))
+require('./createResults')
+    .updateReadmeFile()
+    .then(() => console.log('--> README.ms updated successfully'))

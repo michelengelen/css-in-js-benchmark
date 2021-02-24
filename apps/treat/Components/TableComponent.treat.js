@@ -1,10 +1,10 @@
-import { style } from 'treat';
+import { style } from 'treat'
 
 export const table = style({
     borderSpacing: 0,
     margin: '20px auto',
     width: '75%',
-});
+})
 export const th = style({
     fontFamily: 'Montserrat-Medium, Arial, sans-serif',
     fontSize: 12,
@@ -14,8 +14,8 @@ export const th = style({
     textTransform: 'uppercase',
     backgroundColor: '#36304a',
     padding: '24px 10px 20px 42px',
-    borderBottom: '4px solid #FFFFFF'
-});
+    borderBottom: '4px solid #FFFFFF',
+})
 export const td = style({
     fontFamily: 'Montserrat-Medium, Arial, sans-serif',
     fontSize: 14,
@@ -24,5 +24,5 @@ export const td = style({
     textAlign: 'center',
     padding: '18px 10px 14px 25px',
     backgroundColor: 'rgba(0, 0, 0, .2)',
-    borderBottom: '1px solid rgba(0, 0, 0, .2)'
-});
+    borderBottom: '1px solid rgba(0, 0, 0, .2)',
+})

@@ -34,7 +34,7 @@ request to `/table`
 
 !~!FirstMeaningfulPaintTable!~!
 
-**First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded.  It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
+**First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded. It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
 
 ---
 
@@ -188,14 +188,14 @@ Time To Complete !~!numberOfRequests!~! consecutive requests
 
 ## ToDo
 
-- [x] add sass
-- [ ] add aphrodite
-- [ ] add emotion
-- [x] add styled-components
-- [ ] add theming tests
-- [x] add better console output while testing
-- [x] add chalk for coloring console outputs
-- [x] add logging for puppeteer tests
+-   [x] add sass
+-   [ ] add aphrodite
+-   [ ] add emotion
+-   [x] add styled-components
+-   [ ] add theming tests
+-   [x] add better console output while testing
+-   [x] add chalk for coloring console outputs
+-   [x] add logging for puppeteer tests
 
 ---
 
