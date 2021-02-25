@@ -154,8 +154,7 @@ This will create the following unique and prefixed classnames (or similar): `But
 ```
 
 ### Downloads
-
-~200K according to npmtrends.com
+~200.000 / week (according to npmtrends.com)
 
 ### Pros
 - widely used and supported
@@ -165,4 +164,7 @@ This will create the following unique and prefixed classnames (or similar): `But
 ### Cons
 - learning curve for extended features (theming, dynamic values, etc.)
 - package-size
-- performance might suffer for dynamic layout changes and transitions
+
+### Official Docs
+
+[react-jss documentation](https://cssinjs.org/react-jss?v=v10.5.1)

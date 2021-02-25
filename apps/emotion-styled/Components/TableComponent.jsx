@@ -3,11 +3,24 @@ import styled from '@emotion/styled'
 
 import { getRandomInt } from '../../../utils/helpers'
 
-const Table = styled.table`
-    border-spacing: 0;
-    margin: 20px auto;
-    width: 75%;
-`
+const Table = styled.table({
+    borderSpacing: 0,
+    margin: '20px auto',
+    width: '75%',
+    '& th':  {
+        borderTop: '4px solid blue'
+    }
+});
+
+// const Table = styled.table`
+//     border-spacing: 0;
+//     margin: 20px auto;
+//     width: 75%;
+//
+//     & th {
+//       border-top: 4px solid red;
+//     }
+// `
 
 const Th = styled.th`
     font-family: Montserrat-Medium, Arial, sans-serif;
