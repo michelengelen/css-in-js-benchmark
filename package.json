@@ -27,6 +27,7 @@
     "@babel/core": "^7.12.16",
     "@babel/preset-react": "^7.12.13",
     "@emotion/react": "^11.1.5",
+    "@emotion/styled": "^11.1.5",
     "axios": "^0.21.1",
     "babel-loader": "^8.2.2",
     "chalk": "^4.1.0",
