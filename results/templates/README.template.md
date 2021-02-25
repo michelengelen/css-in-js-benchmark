@@ -189,10 +189,10 @@ Time To Complete !~!numberOfRequests!~! consecutive requests
 ## ToDo
 
 -   [x] add sass
--   [ ] add aphrodite
--   [ ] add emotion
+-   [x] add @emotion/styled
 -   [x] add styled-components
 -   [ ] add theming tests
+-   [x] improved build script
 -   [x] add better console output while testing
 -   [x] add chalk for coloring console outputs
 -   [x] add logging for puppeteer tests

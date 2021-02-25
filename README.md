@@ -12,11 +12,12 @@ npm run build-all
 
 |library|build time|build size|
 |:-----|-----:|-----:|
-|react-jss|4178 ms|234.411 KB|
-|sass|4286 ms|234.411 KB|
-|styled-components|3705 ms|209.407 KB|
-|treat|4257 ms|234.411 KB|
-|typestyle|3369 ms|186.487 KB|
+|emotion-styled|4687 ms|198.525 KB|
+|react-jss|5050 ms|226.631 KB|
+|sass|4422 ms|182.118 KB|
+|styled-components|4673 ms|209.477 KB|
+|treat|5640 ms|179.516 KB|
+|typestyle|4441 ms|186.484 KB|
 
 
 ---
@@ -37,22 +38,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|36.71 ms|47.71 ms|34.79 ms|42.41 ms|41.33 ms|40.59 ms|
-|sass|46.88 ms|50.47 ms|47.82 ms|56.67 ms|55.62 ms|51.49 ms|
-|styled-components|52.14 ms|47.50 ms|55.39 ms|52.71 ms|53.10 ms|52.17 ms|
-|treat|71.17 ms|69.70 ms|65.34 ms|65.69 ms|69.16 ms|68.21 ms|
-|typestyle|55.01 ms|49.85 ms|63.20 ms|58.88 ms|60.13 ms|57.41 ms|
+|emotion-styled|45.29 ms|29.55 ms|39.48 ms|43.46 ms|38.61 ms|39.28 ms|
+|react-jss|53.55 ms|57.04 ms|59.76 ms|55.78 ms|55.86 ms|56.40 ms|
+|sass|49.76 ms|55.49 ms|48.35 ms|47.26 ms|62.33 ms|52.64 ms|
+|styled-components|46.04 ms|54.16 ms|55.23 ms|60.09 ms|52.91 ms|53.69 ms|
+|treat|51.57 ms|48.49 ms|49.99 ms|55.53 ms|51.07 ms|51.33 ms|
+|typestyle|50.06 ms|63.52 ms|63.42 ms|67.19 ms|63.17 ms|61.47 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|197.13 ms|180.35 ms|208.37 ms|189.61 ms|193.17 ms|193.73 ms|
-|sass|259.71 ms|239.42 ms|239.04 ms|229.30 ms|246.73 ms|242.84 ms|
-|styled-components|245.07 ms|217.28 ms|242.24 ms|236.48 ms|224.99 ms|233.21 ms|
-|treat|219.67 ms|200.59 ms|208.04 ms|229.79 ms|215.83 ms|214.78 ms|
-|typestyle|306.54 ms|297.18 ms|300.79 ms|308.07 ms|306.38 ms|303.79 ms|
+|emotion-styled|220.53 ms|214.83 ms|223.24 ms|210.33 ms|220.32 ms|217.85 ms|
+|react-jss|179.41 ms|189.65 ms|183.26 ms|192.28 ms|195.49 ms|188.02 ms|
+|sass|179.25 ms|179.58 ms|172.28 ms|175.40 ms|175.85 ms|176.47 ms|
+|styled-components|223.56 ms|223.05 ms|225.78 ms|228.22 ms|229.61 ms|226.04 ms|
+|treat|173.51 ms|190.44 ms|186.60 ms|185.79 ms|190.57 ms|185.38 ms|
+|typestyle|276.54 ms|296.34 ms|288.70 ms|291.71 ms|281.62 ms|286.98 ms|
 
 
 **First Meaningful Paint (FMP)** is the paint after which the biggest above-the-fold layout change has happened and web fonts have loaded. It is when the answer to "Is it useful?" becomes "yes", upon first meaningful paint completion.
@@ -65,10 +68,11 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|
 |:-----|-----:|-----:|-----:|-----:|-----:|
-|react-jss|2|3|3|3|3|
+|emotion-styled|2|2|2|2|1|
+|react-jss|2|2|2|2|2|
 |sass|2|2|2|2|2|
 |styled-components|2|2|2|2|2|
-|treat|3|3|3|3|3|
+|treat|2|2|2|2|2|
 |typestyle|3|3|3|3|3|
 
 
@@ -76,11 +80,12 @@ request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|
 |:-----|-----:|-----:|-----:|-----:|-----:|
-|react-jss|3|5|5|4|4|
-|sass|4|3|3|3|3|
-|styled-components|3|3|3|4|3|
-|treat|4|4|4|4|5|
-|typestyle|6|5|5|5|6|
+|emotion-styled|4|4|3|4|2|
+|react-jss|3|3|3|4|4|
+|sass|4|3|3|4|4|
+|styled-components|3|4|3|3|3|
+|treat|3|4|3|3|4|
+|typestyle|6|6|5|6|5|
 
 
 ---
@@ -91,22 +96,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|0.54 ms|0.52 ms|0.51 ms|0.53 ms|0.61 ms|0.54 ms|
-|sass|0.42 ms|0.36 ms|0.44 ms|0.41 ms|0.41 ms|0.41 ms|
-|styled-components|0.35 ms|0.43 ms|0.38 ms|0.41 ms|0.43 ms|0.40 ms|
-|treat|0.70 ms|0.46 ms|0.44 ms|0.44 ms|0.51 ms|0.51 ms|
-|typestyle|0.47 ms|0.55 ms|0.45 ms|0.55 ms|0.48 ms|0.50 ms|
+|emotion-styled|0.36 ms|0.34 ms|0.39 ms|0.36 ms|0.30 ms|0.35 ms|
+|react-jss|0.46 ms|0.46 ms|0.51 ms|0.39 ms|0.41 ms|0.45 ms|
+|sass|0.37 ms|0.42 ms|0.37 ms|0.40 ms|0.43 ms|0.40 ms|
+|styled-components|0.39 ms|0.45 ms|0.44 ms|0.42 ms|0.44 ms|0.43 ms|
+|treat|0.33 ms|0.42 ms|0.42 ms|0.39 ms|0.39 ms|0.39 ms|
+|typestyle|0.40 ms|0.46 ms|0.44 ms|0.56 ms|0.44 ms|0.46 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.45 ms|63.74 ms|68.88 ms|64.94 ms|67.60 ms|66.32 ms|
-|sass|73.88 ms|68.29 ms|66.73 ms|61.81 ms|68.02 ms|67.75 ms|
-|styled-components|68.38 ms|57.44 ms|66.28 ms|65.55 ms|57.15 ms|62.96 ms|
-|treat|66.98 ms|56.47 ms|55.81 ms|69.33 ms|60.27 ms|61.77 ms|
-|typestyle|147.87 ms|138.22 ms|140.03 ms|147.66 ms|146.55 ms|144.07 ms|
+|emotion-styled|68.91 ms|60.93 ms|68.61 ms|60.69 ms|64.08 ms|64.64 ms|
+|react-jss|62.86 ms|59.24 ms|58.64 ms|61.30 ms|62.89 ms|60.98 ms|
+|sass|62.61 ms|61.01 ms|58.22 ms|59.03 ms|57.54 ms|59.68 ms|
+|styled-components|57.58 ms|58.29 ms|58.28 ms|57.12 ms|58.15 ms|57.88 ms|
+|treat|59.22 ms|59.29 ms|57.37 ms|58.85 ms|60.55 ms|59.06 ms|
+|typestyle|131.24 ms|137.69 ms|130.77 ms|133.67 ms|127.43 ms|132.16 ms|
 
 
 ---
@@ -117,10 +124,11 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|
 |:-----|-----:|-----:|-----:|-----:|-----:|
-|react-jss|2|3|3|3|3|
-|sass|3|2|3|2|2|
-|styled-components|2|3|2|3|3|
-|treat|3|3|3|3|3|
+|emotion-styled|2|2|2|2|1|
+|react-jss|2|2|2|2|2|
+|sass|3|2|3|3|2|
+|styled-components|3|3|2|2|2|
+|treat|2|2|2|2|2|
 |typestyle|3|3|3|3|3|
 
 
@@ -128,11 +136,12 @@ request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|
 |:-----|-----:|-----:|-----:|-----:|-----:|
-|react-jss|4|6|6|5|5|
-|sass|5|3|4|3|3|
-|styled-components|3|4|3|5|4|
-|treat|5|5|5|5|6|
-|typestyle|6|5|5|5|6|
+|emotion-styled|4|4|3|4|2|
+|react-jss|3|3|3|4|4|
+|sass|5|3|4|5|4|
+|styled-components|4|5|3|3|3|
+|treat|3|4|3|3|4|
+|typestyle|6|6|5|6|5|
 
 
 ---
@@ -143,22 +152,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|0.34 ms|0.55 ms|0.40 ms|0.89 ms|0.44 ms|0.52 ms|
-|sass|0.42 ms|0.32 ms|0.44 ms|0.37 ms|0.40 ms|0.39 ms|
-|styled-components|0.33 ms|0.40 ms|0.38 ms|0.46 ms|0.44 ms|0.40 ms|
-|treat|0.49 ms|0.39 ms|0.37 ms|0.41 ms|0.42 ms|0.42 ms|
-|typestyle|0.42 ms|0.46 ms|0.41 ms|0.43 ms|0.41 ms|0.43 ms|
+|emotion-styled|0.34 ms|0.30 ms|0.33 ms|0.32 ms|0.22 ms|0.30 ms|
+|react-jss|0.39 ms|0.35 ms|0.36 ms|0.36 ms|0.35 ms|0.36 ms|
+|sass|0.38 ms|0.41 ms|0.39 ms|0.42 ms|0.39 ms|0.40 ms|
+|styled-components|0.37 ms|0.45 ms|0.37 ms|0.40 ms|0.36 ms|0.39 ms|
+|treat|0.36 ms|0.39 ms|0.39 ms|0.39 ms|0.39 ms|0.38 ms|
+|typestyle|0.36 ms|0.42 ms|0.39 ms|0.52 ms|0.40 ms|0.42 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|38.03 ms|35.53 ms|39.76 ms|39.02 ms|39.12 ms|38.29 ms|
-|sass|42.36 ms|37.57 ms|38.86 ms|32.92 ms|37.93 ms|37.93 ms|
-|styled-components|39.07 ms|33.79 ms|40.35 ms|33.20 ms|33.76 ms|36.03 ms|
-|treat|36.28 ms|33.99 ms|32.94 ms|40.33 ms|38.24 ms|36.35 ms|
-|typestyle|72.63 ms|69.71 ms|66.86 ms|72.41 ms|72.13 ms|70.75 ms|
+|emotion-styled|37.13 ms|32.36 ms|34.99 ms|32.52 ms|32.65 ms|33.93 ms|
+|react-jss|33.39 ms|34.72 ms|32.45 ms|34.20 ms|34.47 ms|33.85 ms|
+|sass|36.79 ms|36.35 ms|35.70 ms|34.86 ms|37.22 ms|36.18 ms|
+|styled-components|33.42 ms|33.66 ms|32.71 ms|33.90 ms|32.58 ms|33.25 ms|
+|treat|35.78 ms|36.22 ms|35.90 ms|35.19 ms|35.59 ms|35.74 ms|
+|typestyle|62.93 ms|64.29 ms|61.80 ms|62.95 ms|60.54 ms|62.50 ms|
 
 
 ---
@@ -169,22 +180,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|6.60 ms|8.16 ms|6.44 ms|8.42 ms|6.75 ms|7.27 ms|
-|sass|8.02 ms|6.60 ms|7.51 ms|7.68 ms|8.25 ms|7.61 ms|
-|styled-components|7.58 ms|4.91 ms|8.30 ms|8.09 ms|8.21 ms|7.42 ms|
-|treat|26.11 ms|26.97 ms|26.21 ms|24.88 ms|26.32 ms|26.10 ms|
-|typestyle|21.66 ms|6.03 ms|24.40 ms|22.24 ms|22.37 ms|19.34 ms|
+|emotion-styled|5.34 ms|5.18 ms|5.23 ms|5.18 ms|5.05 ms|5.20 ms|
+|react-jss|8.92 ms|8.85 ms|8.87 ms|8.60 ms|8.89 ms|8.83 ms|
+|sass|4.39 ms|5.26 ms|4.77 ms|5.23 ms|5.38 ms|5.01 ms|
+|styled-components|7.25 ms|8.26 ms|8.28 ms|8.49 ms|8.55 ms|8.17 ms|
+|treat|18.93 ms|5.09 ms|5.01 ms|4.97 ms|4.91 ms|7.78 ms|
+|typestyle|20.50 ms|24.21 ms|23.67 ms|24.15 ms|23.51 ms|23.21 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|64.97 ms|55.58 ms|70.17 ms|62.03 ms|62.07 ms|62.97 ms|
-|sass|110.69 ms|101.70 ms|105.92 ms|103.91 ms|110.61 ms|106.57 ms|
-|styled-components|108.55 ms|98.13 ms|104.82 ms|105.39 ms|105.52 ms|104.48 ms|
-|treat|101.54 ms|97.35 ms|100.45 ms|100.12 ms|100.72 ms|100.04 ms|
-|typestyle|73.57 ms|60.79 ms|80.43 ms|74.70 ms|74.45 ms|72.79 ms|
+|emotion-styled|88.14 ms|93.52 ms|90.30 ms|89.47 ms|93.07 ms|90.90 ms|
+|react-jss|58.78 ms|67.53 ms|64.51 ms|67.53 ms|67.71 ms|65.21 ms|
+|sass|46.03 ms|50.04 ms|47.77 ms|48.80 ms|49.94 ms|48.51 ms|
+|styled-components|102.08 ms|103.34 ms|106.15 ms|107.48 ms|109.00 ms|105.61 ms|
+|treat|64.17 ms|60.65 ms|60.09 ms|59.28 ms|59.30 ms|60.70 ms|
+|typestyle|68.24 ms|81.75 ms|80.51 ms|82.31 ms|80.01 ms|78.56 ms|
 
 
 ---
@@ -195,22 +208,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|49.06 ms|32.78 ms|53.07 ms|51.60 ms|54.37 ms|48.17 ms|
-|sass|33.93 ms|27.43 ms|32.69 ms|33.62 ms|33.88 ms|32.31 ms|
-|styled-components|29.41 ms|26.91 ms|33.92 ms|34.09 ms|34.75 ms|31.82 ms|
-|treat|53.11 ms|53.96 ms|61.54 ms|59.02 ms|64.09 ms|58.35 ms|
-|typestyle|43.09 ms|32.03 ms|49.10 ms|47.30 ms|47.52 ms|43.81 ms|
+|emotion-styled|50.68 ms|43.13 ms|53.26 ms|53.68 ms|49.80 ms|50.11 ms|
+|react-jss|35.71 ms|35.52 ms|36.01 ms|35.86 ms|37.20 ms|36.06 ms|
+|sass|38.46 ms|34.72 ms|29.00 ms|32.52 ms|34.13 ms|33.77 ms|
+|styled-components|30.04 ms|36.77 ms|33.32 ms|36.68 ms|34.26 ms|34.22 ms|
+|treat|38.95 ms|32.28 ms|30.34 ms|31.77 ms|32.26 ms|33.12 ms|
+|typestyle|39.49 ms|49.94 ms|49.49 ms|52.26 ms|49.44 ms|48.13 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|238.58 ms|221.89 ms|253.74 ms|233.67 ms|241.02 ms|237.78 ms|
-|sass|297.27 ms|255.99 ms|277.79 ms|268.44 ms|285.66 ms|277.03 ms|
-|styled-components|266.87 ms|252.92 ms|266.68 ms|261.66 ms|251.09 ms|259.84 ms|
-|treat|279.53 ms|247.84 ms|260.46 ms|280.91 ms|273.26 ms|268.40 ms|
-|typestyle|342.69 ms|334.48 ms|342.30 ms|347.07 ms|346.62 ms|342.63 ms|
+|emotion-styled|265.35 ms|250.70 ms|269.67 ms|257.11 ms|262.34 ms|261.03 ms|
+|react-jss|211.05 ms|217.20 ms|213.04 ms|222.55 ms|227.04 ms|218.17 ms|
+|sass|210.30 ms|218.39 ms|206.48 ms|212.51 ms|214.99 ms|212.53 ms|
+|styled-components|256.59 ms|251.63 ms|250.41 ms|254.20 ms|252.93 ms|253.15 ms|
+|treat|204.48 ms|227.79 ms|222.64 ms|224.10 ms|228.93 ms|221.59 ms|
+|typestyle|321.99 ms|338.74 ms|328.88 ms|336.25 ms|322.46 ms|329.66 ms|
 
 
 ---
@@ -221,22 +236,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.10 ms|40.51 ms|65.25 ms|46.69 ms|42.45 ms|52.20 ms|
-|sass|65.30 ms|39.26 ms|40.21 ms|38.07 ms|41.44 ms|44.86 ms|
-|styled-components|57.02 ms|39.95 ms|36.96 ms|38.47 ms|37.34 ms|41.95 ms|
-|treat|56.45 ms|33.29 ms|55.24 ms|37.10 ms|31.39 ms|42.69 ms|
-|typestyle|51.02 ms|35.63 ms|27.09 ms|28.61 ms|28.61 ms|34.19 ms|
+|emotion-styled|75.30 ms|52.01 ms|46.48 ms|49.20 ms|49.01 ms|54.40 ms|
+|react-jss|60.26 ms|55.23 ms|37.58 ms|38.29 ms|40.54 ms|46.38 ms|
+|sass|56.65 ms|34.51 ms|34.15 ms|34.26 ms|33.23 ms|38.56 ms|
+|styled-components|64.15 ms|36.99 ms|36.70 ms|37.46 ms|37.34 ms|42.53 ms|
+|treat|53.69 ms|32.63 ms|27.45 ms|26.75 ms|27.07 ms|33.52 ms|
+|typestyle|50.49 ms|25.97 ms|27.24 ms|26.23 ms|26.77 ms|31.34 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|234.05 ms|107.73 ms|195.48 ms|205.39 ms|206.41 ms|189.81 ms|
-|sass|236.16 ms|230.11 ms|230.26 ms|255.43 ms|250.75 ms|240.54 ms|
-|styled-components|222.34 ms|247.51 ms|245.86 ms|270.10 ms|246.66 ms|246.50 ms|
-|treat|223.20 ms|199.93 ms|223.52 ms|223.10 ms|197.16 ms|213.38 ms|
-|typestyle|87.47 ms|88.97 ms|86.61 ms|93.37 ms|93.69 ms|90.02 ms|
+|emotion-styled|255.45 ms|201.19 ms|210.99 ms|215.70 ms|246.13 ms|225.89 ms|
+|react-jss|203.28 ms|96.63 ms|174.06 ms|100.39 ms|177.38 ms|150.35 ms|
+|sass|193.21 ms|88.31 ms|92.50 ms|90.63 ms|86.45 ms|110.22 ms|
+|styled-components|243.28 ms|219.81 ms|219.58 ms|223.32 ms|216.57 ms|224.51 ms|
+|treat|197.57 ms|171.96 ms|93.05 ms|94.46 ms|94.46 ms|130.30 ms|
+|typestyle|85.04 ms|84.17 ms|89.28 ms|83.01 ms|81.36 ms|84.57 ms|
 
 
 The **domComplete** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to complete.
@@ -249,22 +266,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|65.88 ms|40.31 ms|65.04 ms|46.44 ms|42.24 ms|51.98 ms|
-|sass|64.11 ms|38.84 ms|38.90 ms|37.63 ms|40.26 ms|43.95 ms|
-|styled-components|55.95 ms|39.58 ms|36.53 ms|37.87 ms|36.90 ms|41.37 ms|
-|treat|56.27 ms|33.03 ms|55.03 ms|36.87 ms|31.13 ms|42.47 ms|
-|typestyle|50.83 ms|35.47 ms|26.90 ms|28.39 ms|28.36 ms|33.99 ms|
+|emotion-styled|62.82 ms|50.85 ms|45.24 ms|47.89 ms|47.69 ms|50.90 ms|
+|react-jss|59.85 ms|54.13 ms|36.42 ms|37.11 ms|36.75 ms|44.85 ms|
+|sass|55.40 ms|34.09 ms|33.61 ms|33.77 ms|32.62 ms|37.90 ms|
+|styled-components|62.80 ms|36.59 ms|36.30 ms|36.90 ms|36.88 ms|41.90 ms|
+|treat|53.38 ms|32.36 ms|27.07 ms|26.29 ms|26.58 ms|33.14 ms|
+|typestyle|50.20 ms|25.79 ms|27.04 ms|26.04 ms|26.58 ms|31.13 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|85.46 ms|69.24 ms|69.81 ms|70.68 ms|73.90 ms|73.82 ms|
-|sass|120.12 ms|114.42 ms|108.39 ms|122.22 ms|120.85 ms|117.20 ms|
-|styled-components|115.94 ms|118.74 ms|119.81 ms|137.95 ms|115.10 ms|121.51 ms|
-|treat|97.78 ms|71.55 ms|96.76 ms|84.99 ms|67.00 ms|83.62 ms|
-|typestyle|63.70 ms|64.75 ms|62.33 ms|69.24 ms|69.27 ms|65.86 ms|
+|emotion-styled|112.64 ms|88.76 ms|102.37 ms|102.82 ms|101.96 ms|101.71 ms|
+|react-jss|77.08 ms|63.64 ms|64.83 ms|64.10 ms|63.37 ms|66.61 ms|
+|sass|59.05 ms|53.75 ms|56.82 ms|55.87 ms|53.41 ms|55.78 ms|
+|styled-components|118.18 ms|107.68 ms|110.02 ms|111.22 ms|108.01 ms|111.02 ms|
+|treat|70.90 ms|62.69 ms|59.07 ms|60.37 ms|59.80 ms|62.56 ms|
+|typestyle|64.81 ms|63.97 ms|63.82 ms|62.26 ms|60.67 ms|63.11 ms|
 
 
 The **domInteractive** `read-only` property returns a `timestamp` representing the time value equal to the time immediately before the user agent sets the current document readiness of the current document to interactive.
@@ -277,22 +296,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|65.91 ms|40.35 ms|65.10 ms|46.48 ms|42.28 ms|52.02 ms|
-|sass|64.15 ms|38.87 ms|38.95 ms|37.66 ms|40.30 ms|43.99 ms|
-|styled-components|55.98 ms|39.62 ms|36.56 ms|37.91 ms|36.93 ms|41.40 ms|
-|treat|56.31 ms|33.09 ms|55.07 ms|36.93 ms|31.18 ms|42.51 ms|
-|typestyle|50.86 ms|35.50 ms|26.93 ms|28.43 ms|28.40 ms|34.03 ms|
+|emotion-styled|62.85 ms|50.89 ms|45.28 ms|47.93 ms|47.75 ms|50.94 ms|
+|react-jss|59.89 ms|54.16 ms|36.46 ms|37.14 ms|36.79 ms|44.89 ms|
+|sass|55.44 ms|34.13 ms|33.66 ms|33.81 ms|32.65 ms|37.94 ms|
+|styled-components|62.84 ms|36.63 ms|36.33 ms|36.97 ms|36.94 ms|41.94 ms|
+|treat|53.41 ms|32.40 ms|27.11 ms|26.32 ms|26.61 ms|33.17 ms|
+|typestyle|50.26 ms|25.83 ms|27.09 ms|26.08 ms|26.62 ms|31.18 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|85.48 ms|69.27 ms|69.84 ms|70.71 ms|73.94 ms|73.85 ms|
-|sass|120.15 ms|114.46 ms|108.43 ms|122.28 ms|120.89 ms|117.24 ms|
-|styled-components|115.97 ms|118.81 ms|119.86 ms|137.99 ms|115.14 ms|121.56 ms|
-|treat|97.84 ms|71.58 ms|96.81 ms|85.02 ms|67.03 ms|83.66 ms|
-|typestyle|63.73 ms|64.76 ms|62.37 ms|69.28 ms|69.31 ms|65.89 ms|
+|emotion-styled|112.67 ms|88.79 ms|102.41 ms|102.85 ms|102.01 ms|101.75 ms|
+|react-jss|77.12 ms|63.67 ms|64.86 ms|64.13 ms|63.40 ms|66.64 ms|
+|sass|59.06 ms|53.78 ms|56.88 ms|55.90 ms|53.44 ms|55.81 ms|
+|styled-components|118.21 ms|107.73 ms|110.05 ms|111.24 ms|108.04 ms|111.05 ms|
+|treat|70.94 ms|62.72 ms|59.10 ms|60.40 ms|59.83 ms|62.60 ms|
+|typestyle|64.84 ms|64.00 ms|63.85 ms|62.29 ms|60.70 ms|63.14 ms|
 
 
 The **domContentLoadedEventEnd** `read-only` property returns a `timestamp` representing the time value equal to the time immediately after the current document's `DOMContentLoaded` event completes.
@@ -305,22 +326,24 @@ request to `/`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|66.10 ms|40.52 ms|65.26 ms|46.70 ms|42.46 ms|52.21 ms|
-|sass|65.30 ms|39.26 ms|40.22 ms|38.08 ms|41.44 ms|44.86 ms|
-|styled-components|57.03 ms|39.96 ms|36.97 ms|38.47 ms|37.35 ms|41.96 ms|
-|treat|56.45 ms|33.29 ms|55.25 ms|37.11 ms|31.39 ms|42.70 ms|
-|typestyle|51.02 ms|35.64 ms|27.10 ms|28.62 ms|28.61 ms|34.20 ms|
+|emotion-styled|75.31 ms|52.02 ms|46.48 ms|49.21 ms|49.01 ms|54.41 ms|
+|react-jss|60.26 ms|55.23 ms|37.59 ms|38.30 ms|40.56 ms|46.39 ms|
+|sass|56.65 ms|34.52 ms|34.17 ms|34.27 ms|33.23 ms|38.57 ms|
+|styled-components|64.16 ms|37.00 ms|36.70 ms|37.47 ms|37.34 ms|42.53 ms|
+|treat|53.70 ms|32.64 ms|27.46 ms|26.75 ms|27.08 ms|33.53 ms|
+|typestyle|50.50 ms|25.98 ms|27.25 ms|26.23 ms|26.77 ms|31.35 ms|
 
 
 request to `/table`
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|234.06 ms|107.73 ms|195.48 ms|205.41 ms|206.41 ms|189.82 ms|
-|sass|236.17 ms|230.12 ms|230.26 ms|255.44 ms|250.75 ms|240.55 ms|
-|styled-components|222.35 ms|247.52 ms|245.87 ms|270.11 ms|246.68 ms|246.50 ms|
-|treat|223.21 ms|199.93 ms|223.53 ms|223.10 ms|197.16 ms|213.39 ms|
-|typestyle|87.47 ms|88.98 ms|86.62 ms|93.38 ms|93.70 ms|90.03 ms|
+|emotion-styled|255.45 ms|201.19 ms|211.00 ms|215.71 ms|246.13 ms|225.90 ms|
+|react-jss|203.29 ms|96.63 ms|174.07 ms|100.39 ms|177.39 ms|150.35 ms|
+|sass|193.22 ms|88.32 ms|92.52 ms|90.63 ms|86.46 ms|110.23 ms|
+|styled-components|243.28 ms|219.82 ms|219.58 ms|223.33 ms|216.58 ms|224.52 ms|
+|treat|197.58 ms|171.96 ms|93.06 ms|94.47 ms|94.46 ms|130.31 ms|
+|typestyle|85.04 ms|84.17 ms|89.28 ms|83.01 ms|81.37 ms|84.58 ms|
 
 
 In this case we are measuring the **duration** for the `navigation` performance type. It returns the `timestamp` that is the difference between the `PerformanceNavigationTiming.loadEventEnd` and `PerformanceEntry.startTime` properties, respectively
@@ -339,11 +362,12 @@ Time To Complete 500 consecutive requests
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|534.00 ms|372.00 ms|347.00 ms|427.00 ms|369.00 ms|409.80 ms|
-|sass|441.00 ms|373.00 ms|343.00 ms|381.00 ms|388.00 ms|385.20 ms|
-|styled-components|420.00 ms|378.00 ms|353.00 ms|360.00 ms|353.00 ms|372.80 ms|
-|treat|378.00 ms|358.00 ms|376.00 ms|397.00 ms|373.00 ms|376.40 ms|
-|typestyle|374.00 ms|381.00 ms|393.00 ms|375.00 ms|377.00 ms|380.00 ms|
+|emotion-styled|555.00 ms|352.00 ms|402.00 ms|376.00 ms|346.00 ms|406.20 ms|
+|react-jss|458.00 ms|396.00 ms|317.00 ms|379.00 ms|346.00 ms|379.20 ms|
+|sass|446.00 ms|384.00 ms|317.00 ms|344.00 ms|390.00 ms|376.20 ms|
+|styled-components|409.00 ms|328.00 ms|386.00 ms|351.00 ms|415.00 ms|377.80 ms|
+|treat|400.00 ms|325.00 ms|362.00 ms|351.00 ms|369.00 ms|361.40 ms|
+|typestyle|378.00 ms|404.00 ms|381.00 ms|367.00 ms|394.00 ms|384.80 ms|
 
 
 ---
@@ -354,20 +378,21 @@ Time To Complete 500 consecutive requests
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|505.00 ms|382.00 ms|360.00 ms|472.00 ms|397.00 ms|423.20 ms|
-|sass|453.00 ms|369.00 ms|392.00 ms|398.00 ms|407.00 ms|403.80 ms|
-|styled-components|426.00 ms|392.00 ms|382.00 ms|425.00 ms|378.00 ms|400.60 ms|
-|treat|418.00 ms|393.00 ms|475.00 ms|381.00 ms|391.00 ms|411.60 ms|
-|typestyle|418.00 ms|379.00 ms|425.00 ms|417.00 ms|379.00 ms|403.60 ms|
+|emotion-styled|563.00 ms|383.00 ms|346.00 ms|427.00 ms|343.00 ms|412.40 ms|
+|react-jss|495.00 ms|391.00 ms|346.00 ms|440.00 ms|433.00 ms|421.00 ms|
+|sass|453.00 ms|374.00 ms|502.00 ms|391.00 ms|405.00 ms|425.00 ms|
+|styled-components|434.00 ms|362.00 ms|403.00 ms|396.00 ms|381.00 ms|395.20 ms|
+|treat|427.00 ms|361.00 ms|383.00 ms|361.00 ms|380.00 ms|382.40 ms|
+|typestyle|376.00 ms|356.00 ms|391.00 ms|381.00 ms|1311.00 ms|563.00 ms|
 
 
 ## ToDo
 
 -   [x] add sass
--   [ ] add aphrodite
--   [ ] add emotion
+-   [x] add @emotion/styled
 -   [x] add styled-components
 -   [ ] add theming tests
+-   [x] improved build script
 -   [x] add better console output while testing
 -   [x] add chalk for coloring console outputs
 -   [x] add logging for puppeteer tests

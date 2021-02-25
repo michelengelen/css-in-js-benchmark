@@ -1,5 +1,3 @@
-'use strict'
-
 import React from 'react'
 import { getRandomInt } from '../../../utils/helpers'
 
@@ -36,7 +34,7 @@ const TableExample = () => {
                         <tr key={a}>
                             {dummyData.map((data, b) => {
                                 return (
-                                    <td className={classes.td} key={a + data + b}>
+                                    <td key={a + data + b}>
                                         {getRandomInt(0, 1000)}
                                     </td>
                                 )

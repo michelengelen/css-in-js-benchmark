@@ -1,19 +1,20 @@
 module.exports = {
     libraries: [
+        'emotion-styled',
         'react-jss',
         'sass',
-        // "emotion",
         'styled-components',
         // "phantom",
         'treat',
         'typestyle',
     ],
     serverPorts: {
-        'react-jss': 1337,
-        sass: 1338,
-        'styled-components': 1339,
-        treat: 1340,
-        typestyle: 1341,
+        'emotion-styled': 1337,
+        'react-jss': 1339,
+        sass: 1341,
+        'styled-components': 1343,
+        treat: 1345,
+        typestyle: 1347,
     },
     responseMetrics: ['duration', 'domInteractive', 'domContentLoadedEventEnd', 'domComplete'],
     paintMetrics: [

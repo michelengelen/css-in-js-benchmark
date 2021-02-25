@@ -1,11 +1,12 @@
-'use strict'
-
 import React from 'react'
-import { style } from 'typestyle'
+import { createUseStyles } from 'react-jss'
 import { exampleStyles } from '../../testStyles'
 
-const example = style(exampleStyles)
+const useStyles = createUseStyles({example: exampleStyles})
 
-const Example = () => <div className={example}>Hello World!</div>
+const Example = () => {
+    const classes = useStyles()
+    return <div className={classes.example}>react-jss</div>
+}
 
 export default Example

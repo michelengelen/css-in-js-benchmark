@@ -20,11 +20,12 @@ npm run number-bench
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|534.00 ms|372.00 ms|347.00 ms|427.00 ms|369.00 ms|409.80 ms|
-|sass|441.00 ms|373.00 ms|343.00 ms|381.00 ms|388.00 ms|385.20 ms|
-|styled-components|420.00 ms|378.00 ms|353.00 ms|360.00 ms|353.00 ms|372.80 ms|
-|treat|378.00 ms|358.00 ms|376.00 ms|397.00 ms|373.00 ms|376.40 ms|
-|typestyle|374.00 ms|381.00 ms|393.00 ms|375.00 ms|377.00 ms|380.00 ms|
+|emotion-styled|555.00 ms|352.00 ms|402.00 ms|376.00 ms|346.00 ms|406.20 ms|
+|react-jss|458.00 ms|396.00 ms|317.00 ms|379.00 ms|346.00 ms|379.20 ms|
+|sass|446.00 ms|384.00 ms|317.00 ms|344.00 ms|390.00 ms|376.20 ms|
+|styled-components|409.00 ms|328.00 ms|386.00 ms|351.00 ms|415.00 ms|377.80 ms|
+|treat|400.00 ms|325.00 ms|362.00 ms|351.00 ms|369.00 ms|361.40 ms|
+|typestyle|378.00 ms|404.00 ms|381.00 ms|367.00 ms|394.00 ms|384.80 ms|
 
 
 ---
@@ -35,11 +36,12 @@ npm run number-bench
 
 |library|1. run|2. run|3. run|4. run|5. run|average|
 |:-----|-----:|-----:|-----:|-----:|-----:|-----:|
-|react-jss|505.00 ms|382.00 ms|360.00 ms|472.00 ms|397.00 ms|423.20 ms|
-|sass|453.00 ms|369.00 ms|392.00 ms|398.00 ms|407.00 ms|403.80 ms|
-|styled-components|426.00 ms|392.00 ms|382.00 ms|425.00 ms|378.00 ms|400.60 ms|
-|treat|418.00 ms|393.00 ms|475.00 ms|381.00 ms|391.00 ms|411.60 ms|
-|typestyle|418.00 ms|379.00 ms|425.00 ms|417.00 ms|379.00 ms|403.60 ms|
+|emotion-styled|563.00 ms|383.00 ms|346.00 ms|427.00 ms|343.00 ms|412.40 ms|
+|react-jss|495.00 ms|391.00 ms|346.00 ms|440.00 ms|433.00 ms|421.00 ms|
+|sass|453.00 ms|374.00 ms|502.00 ms|391.00 ms|405.00 ms|425.00 ms|
+|styled-components|434.00 ms|362.00 ms|403.00 ms|396.00 ms|381.00 ms|395.20 ms|
+|treat|427.00 ms|361.00 ms|383.00 ms|361.00 ms|380.00 ms|382.40 ms|
+|typestyle|376.00 ms|356.00 ms|391.00 ms|381.00 ms|1311.00 ms|563.00 ms|
 
 
 ---

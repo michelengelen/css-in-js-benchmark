@@ -1,10 +1,7 @@
 const path = require('path')
 
-const { TreatPlugin } = require('treat/webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-
 const resolve = dir => path.resolve(__dirname, dir)
-const library = 'treat'
+const library = 'emotion-styled'
 
 const options = {
     appRoot: `../apps/${library}`,
@@ -32,10 +29,4 @@ module.exports = {
             },
         ],
     },
-    plugins: [
-        new TreatPlugin({
-            outputLoaders: [MiniCssExtractPlugin.loader],
-        }),
-        new MiniCssExtractPlugin(),
-    ],
 }

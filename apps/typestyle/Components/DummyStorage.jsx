@@ -1,5 +1,3 @@
-'use strict'
-
 import { DUMMY_ACTION } from './Actions'
 
 export const DummyStorage = (state = {}, action) => {

@@ -1,7 +1,4 @@
-'use strict'
-
 import React from 'react'
-import { style } from 'typestyle'
 import { createUseStyles } from 'react-jss'
 import { tableStyles } from '../../testStyles'
 import { getRandomInt } from '../../../utils/helpers'

@@ -4,21 +4,15 @@
   "description": "Benchmarking CSS-in-JS libraries",
   "main": "index.js",
   "scripts": {
-    "build-aphrodite": "webpack --config webpack-config/aphrodite.config.js --json=results/build-stats/aphrodite.stats.json",
-    "build-emotion": "webpack --config webpack-config/emotion.config.js --json=results/build-stats/emotion.stats.json",
-    "build-react-jss": "webpack --config webpack-config/react-jss.config.js --json=results/build-stats/react-jss.stats.json",
-    "build-sass": "webpack --config webpack-config/sass.config.js --json=results/build-stats/sass.stats.json",
-    "build-styled-components": "webpack --config webpack-config/styled-components.config.js --json=results/build-stats/styled-components.stats.json",
-    "build-treat": "webpack --config webpack-config/treat.config.js --json=results/build-stats/treat.stats.json",
-    "build-typestyle": "webpack --config webpack-config/typestyle.config.js --json=results/build-stats/typestyle.stats.json",
-    "number-bench": "node test-suite/number.requests.test.js",
-    "puppeteer-bench": "node test-suite/puppeteer.pageload.test.js",
-    "build-all": "npm run build-react-jss && npm run build-sass && npm run build-styled-components && npm run build-typestyle && node scripts/updateReadme.js",
-    "bench-all": "npm run number-bench && npm run puppeteer-bench"
+    "build": "node ./scripts/buildApps.js",
+    "bench-requests": "node test-suite/requests.test.js",
+    "bench-puppeteer": "node test-suite/puppeteer.test.js",
+    "bench-all": "npm run bench-requests && npm run bench-puppeteer"
   },
   "dependencies": {
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-jss": "^10.5.1",
     "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
     "redux": "^4.0.5"
@@ -42,7 +36,6 @@
     "posix": "^4.2.0",
     "prettier": "^2.2.1",
     "puppeteer": "^7.1.0",
-    "react-jss": "^10.5.1",
     "react-treat": "^2.0.1",
     "sass-loader": "^11.0.1",
     "style-loader": "^2.0.0",
@@ -57,7 +50,9 @@
     "test",
     "css-in-js",
     "react",
-    "emotion",
+    "react-jss",
+    "emotion-styled",
+    "styled-components",
     "sass",
     "typestyle"
   ],

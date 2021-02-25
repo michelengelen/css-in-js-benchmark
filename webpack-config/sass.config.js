@@ -1,7 +1,7 @@
 const path = require('path')
 
 const resolve = dir => path.resolve(__dirname, dir)
-const library = 'react-jss'
+const library = 'sass'
 
 const options = {
     appRoot: `../apps/${library}`,
