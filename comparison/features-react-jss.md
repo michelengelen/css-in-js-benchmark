@@ -91,6 +91,66 @@ And then import it in the component file
 import * as styleRefs from './Button.styles.js'
 
 const useStyles = createUseStyles(styleRefs)
+
+// ...
+```
+
+### Prefixing/customizing classnames
+
+react-jss typically generates unique classnames with the name of the property, but this can be extended by using a name for each styles object used in the `createUseStyles` hook-factory
+
+```jsx
+// Button.styles.js
+export const myButton = {
+    color: 'green',
+        margin: {
+        top: 5,
+            right: 0,
+            bottom: 0,
+            left: '1rem'
+    },
+    '& span': {
+        fontWeight: 'bold'
+    }
+};
+export const myLabel = {
+    fontStyle: 'italic'
+};
+```
+
+```jsx
+// Button.jsx
+
+// other imports happening here ...
+
+// import as ref object
+import * as styleRefs from './Button.styles.js'
+
+const useStyles = createUseStyles(styleRefs, { name: 'Button' })
+
+const Button = ({children}) => {
+    const classes = useStyles()
+    return (
+        <button className={classes.myButton}>
+            <span className={classes.myLabel}>{children}</span>
+        </button>
+    )
+}
+```
+
+This will create the following unique and prefixed classnames (or similar): `Button-myButton-1-25` and `Button-myLabel-1-26` with these definitions:
+
+```css
+.Button-myButton-1-25 {
+  color: green;
+  margin: 5px 0 0 1rem;
+}
+.Button-myButton-1-25 span {
+  font-weight: bold;
+}
+.Button-myLabel-1-26 {
+  font-style: italic;
+}
 ```
 
 ### Downloads
@@ -100,5 +160,9 @@ const useStyles = createUseStyles(styleRefs)
 ### Pros
 - widely used and supported
 - easy theming with ThemeProvider HOC
+- renders and injects only needed classes in runtime
 
 ### Cons
+- learning curve for extended features (theming, dynamic values, etc.)
+- package-size
+- performance might suffer for dynamic layout changes and transitions
