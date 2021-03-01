@@ -1,6 +1,9 @@
-import React from 'react'
-import styled from '@emotion/styled'
+import React from 'react';
+import styled from '@emotion/styled';
 
+const Paragraph = styled.p`
+    font-family: Arial, sans-serif;
+`;
 const Container = styled.div`
     display: flex;
     align-items: center;
@@ -16,8 +19,19 @@ const Container = styled.div`
     background: black;
     opacity: 0.9;
     color: white;
-`
 
-const Example = () => <Container>@emotion/styled</Container>
+    p {
+        color: red;
+    }
+`;
 
-export default Example
+const Example = () => (
+    <>
+        <Container className={'testClass'}>
+            <Paragraph> TEST </Paragraph>
+        </Container>
+        <Paragraph> TEST 2 </Paragraph>
+    </>
+);
+
+export default Example;
